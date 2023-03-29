@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<body>
+<style>
+  body { font-family: sans-serif; font-size: 11px; }
+  input.false { color: red; }
+  input.correct { background-color: green; color: white; }
+  td.word { visibility: hidden; }
+
+</style>
+<script>
+    async function getWords() {
+        const requestURL = 'words.json';
+        const request = new Request(requestURL);
+
+        const response = await fetch(request);
+        const words = await response.json();
+        return words;
+    }
+
+    function say(words) {
+      var msg = new SpeechSynthesisUtterance(words);
+      window.speechSynthesis.speak(msg);
+    }
+
+    const words230320 = [
+      { "word": "bimonthly", "description": "I write a bimonthly bulletin." },
+      { "word": "midday", "description": "By midday the bud had opened." },
+      { "word": "semicircle", "description": "We sat in a semicircle." },
+      { "word": "trisect", "description": "I will trisect the angle into parts." },
+      { "word": "bicycle", "description": "Did you ride a bicycle to school?" },
+      { "word": "midterm", "description": "The class had midterm exams." },
+      { "word": "semifinal", "description": "Amir won the semifinal meet." },
+      { "word": "midair", "description": "An eagle dived in midair." },
+      { "word": "semiannual", "description": "It's a semiannual sale!" },
+      { "word": "midafternoon", "description": "The rain came in midafternoon." },
+      { "word": "semicolon", "description": "A semicolon connects sentences." },
+      { "word": "bisect", "description": "To bisect the circle, draw a line." },
+      { "word": "tricycle", "description": "The tricycle was his favorite gift." },
+      { "word": "midnight", "description": "At midnight a new year begins." },
+      { "word": "bifocals", "description": "She stared over her bifocals." },
+      { "word": "semisweet", "description": "Taste this semisweet chocolate." },
+      { "word": "triangle", "description": "The flag is folded into a triangle." },
+      { "word": "biweekly", "description": "We have gym class biweekly." },
+      { "word": "midland", "description": "The midland has no seashore." },
+      { "word": "semiformal", "description": "It was a semiformal event." }
+    ];
+    
+    const words = [
+      { "word": "generous", "description": "They made a generous donation." },
+      { "word": "message", "description": "She left a message for us." },
+      { "word": "stranger", "description": "A stranger walked into the café." },
+      { "word": "grudge", "description": "It's never good to hold a grudge." },
+      { "word": "margin", "description": "Leave a margin of at least an inch." },
+      { "word": "energy", "description": "Exercise gives you more energy." },
+      { "word": "oxygen", "description": "We need to breathe nitrogen and oxygen." },
+      { "word": "genius", "description": "Albert Einstein was a genius." },
+      { "word": "college", "description": "We have a small college in our town." },
+      { "word": "lodge", "description": "The lodge is halfway up the mountain." },
+      { "word": "imagine", "description": "I like to imagine other worlds." },
+      { "word": "stingy", "description": "Scrooge was known to be stingy." },
+      { "word": "apology", "description": "The speaker made a public apology." },
+      { "word": "gentleman", "description": "Above all, a gentleman must be kind." },
+      { "word": "arrange", "description": "Can you arrange a special meeting?" },
+      { "word": "pledge", "description": "The brothers made a pledge of loyalty." },
+      { "word": "region", "description": "Water is scarce in that region." },
+      { "word": "damage", "description": "There was little damage to the car." },
+      { "word": "ledger", "description": "A bookkeeper keeps an accurate ledger." },
+      { "word": "average", "description": "What is the average temperature?" }
+    ];
+
+    let vvkwords = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ]
+
+
+
+
+    function sayWord(btn) {
+      let row = btn.parentNode.parentNode;
+      let word = row.querySelector("td.word").textContent;
+      say(word);
+
+      let input = row.querySelector("input");
+      input.focus();
+    }
+
+    function sayDescription(btn) {
+      event.preventDefault(); // set focus back to input field
+      let row = btn.parentNode.parentNode;
+      let key = parseInt(row.querySelector("td.key").textContent) - 1;
+      say(words[key].description);
+
+      let input = row.querySelector("input");
+      input.focus();
+    }
+
+    function keypress(obj) {
+      if (event.key === "Enter") {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // // Trigger the button element with a click
+        // document.getElementById("myBtn").click();
+        checkWord(obj);
+      }
+    }
+
+    function checkWord(obj) {
+      const row = obj.parentNode.parentNode;
+      const td = row.querySelector("td.word");
+      const word = td.textContent;
+      const input = row.querySelector("input");
+      const val = input.value;
+
+      if(val !== "") {
+        input.className = (word == val) ? "correct" : "false";
+        td.style.visibility = "visible";
+
+        row.querySelectorAll('button, input').forEach(elem => {
+          elem.disabled = true;
+        });
+
+        // set focus to next input
+        const nextrow = row.nextSibling;
+        if(nextrow) {
+          const nextinput = nextrow.querySelector("input");
+          console.log(nextinput);
+          nextinput.focus();
+        }
+      } else {
+        input.focus();
+      }
+    }
+
+    function tryAgain() {
+      // re-enable all inputs
+      const table = document.querySelector('tbody')
+      table.querySelectorAll('button, input').forEach(elem => {
+          elem.disabled = false;
+        });
+
+      // hide the words
+      table.querySelectorAll('td.word').forEach(elem => {
+        elem.style.visibility = "hidden";
+      });
+    }
+
+    function buildPrompts() {
+      const table = document.querySelector('tbody')
+
+      for(i in words) {
+        let row = `<tr><td class="key">${parseInt(i)+1}</td>
+          <td><button onClick="sayWord(this)">Word</button></td>
+          <td><button onClick="sayDescription(this)">Description</button></td>
+          <td class="word">${words[i].word}</td>
+          <td><input type="text" onkeypress="keypress(this)" /> <button onClick="checkWord(this)">Check</button></td></tr>`;
+        let obj = table.insertAdjacentHTML("beforeend",row);
+      }
+      
+      setTimeout(() => {
+        const input = table.querySelector('input');
+        input.focus();
+      }, "300");
+    }
+
+    window.onload = function() {
+      buildPrompts();
+    }
+    
+</script>
+<div id="prompts">
+  <table><tbody></tbody></table>
+  
+  <div><button onclick="tryAgain()">Try Again</button></div>
+  <!-- <tr><td class="key">${parseInt(i)+1}</td>
+    <td><button onClick="sayWord(this)">Word</button></td>
+    <td><button onClick="sayDescription(this)">Description</button></td>
+    <td class="word">${words[i].word}</td>
+    <td><input type="text" placeholder="word" onkeypress="checkWord(this)"> 
+      <button onClick="checkWord(this)">Check</button></td>
+    </tr>
+  </div> -->
+  
+  <!-- <div><button onclick="say('Hello World')">Say Hello World</button></div>
+  <div><button onclick="getWords()">Get Words</button></div> -->
+  </body>
+</html>
