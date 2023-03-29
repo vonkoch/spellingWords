@@ -23,7 +23,7 @@
       window.speechSynthesis.speak(msg);
     }
 
-    const words230320 = [
+    const avkwords230320 = [
       { "word": "bimonthly", "description": "I write a bimonthly bulletin." },
       { "word": "midday", "description": "By midday the bud had opened." },
       { "word": "semicircle", "description": "We sat in a semicircle." },
@@ -46,7 +46,7 @@
       { "word": "semiformal", "description": "It was a semiformal event." }
     ];
     
-    const words = [
+    const avkwords = [
       { "word": "generous", "description": "They made a generous donation." },
       { "word": "message", "description": "She left a message for us." },
       { "word": "stranger", "description": "A stranger walked into the café." },
@@ -72,7 +72,14 @@
     let vvkwords = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ]
 
 
+    function selectedKid() {
+      const kid = document.querySelector('input[name="kid"]:checked').value;
+      return kid;
+    }
 
+    function words() {
+      return selectedKid() == "avk" ? avkwords : vvkwords;
+    }
 
     function sayWord(btn) {
       let row = btn.parentNode.parentNode;
@@ -87,7 +94,7 @@
       event.preventDefault(); // set focus back to input field
       let row = btn.parentNode.parentNode;
       let key = parseInt(row.querySelector("td.key").textContent) - 1;
-      say(words[key].description);
+      say(words()[key].description);
 
       let input = row.querySelector("input");
       input.focus();
@@ -97,10 +104,12 @@
       if (event.key === "Enter") {
         // Cancel the default action, if needed
         event.preventDefault();
-        // // Trigger the button element with a click
-        // document.getElementById("myBtn").click();
         checkWord(obj);
       }
+    }
+
+    function wordsEqual(word1, word2) {
+      return (word1.toLowerCase() === word2.toLowerCase());
     }
 
     function checkWord(obj) {
@@ -111,7 +120,7 @@
       const val = input.value;
 
       if(val !== "") {
-        input.className = (word == val) ? "correct" : "false";
+        input.className = wordsEqual(word,val) ? "correct" : "false";
         td.style.visibility = "visible";
 
         row.querySelectorAll('button, input').forEach(elem => {
@@ -122,7 +131,6 @@
         const nextrow = row.nextSibling;
         if(nextrow) {
           const nextinput = nextrow.querySelector("input");
-          console.log(nextinput);
           nextinput.focus();
         }
       } else {
@@ -143,15 +151,27 @@
       });
     }
 
-    function buildPrompts() {
-      const table = document.querySelector('tbody')
+    function toggleKid() {
+      // remove all the table content
+      const table = document.querySelector('tbody');
+      table.innerHTML = "";
 
-      for(i in words) {
+      // build the prompts again
+      setTimeout(() => {
+        buildPrompts();
+      }, "300");
+    }
+
+function buildPrompts() {
+      const table = document.querySelector('tbody');
+
+      const wordlist = words();
+      for(i in wordlist) {
         let row = `<tr><td class="key">${parseInt(i)+1}</td>
           <td><button onClick="sayWord(this)">Word</button></td>
-          <td><button onClick="sayDescription(this)">Description</button></td>
-          <td class="word">${words[i].word}</td>
-          <td><input type="text" onkeypress="keypress(this)" /> <button onClick="checkWord(this)">Check</button></td></tr>`;
+          <td ${(typeof wordlist[i] === 'string') ? 'style="display:none"' : ""}><button onClick="sayDescription(this)">Description</button></td>
+          <td class="word">${(typeof wordlist[i] === 'string') ? wordlist[i] : wordlist[i].word}</td>
+          <td><input type="text" onkeypress="keypress(this)" autocomplete="off" /> <button onClick="checkWord(this)">Check</button></td></tr>`;
         let obj = table.insertAdjacentHTML("beforeend",row);
       }
       
@@ -166,18 +186,16 @@
     }
     
 </script>
+<div>
+  <input type="radio" id="avk" name="kid" value="avk" onclick="toggleKid(this)" checked>
+  <label for="avk" onclick="toggleKid(this)">AvK</label>
+  <input type="radio" id="vvk" name="kid" value="vvk" onclick="toggleKid(this)" onclick="toggleKid(this)">
+  <label for="vvk">VvK</label><br>
+</div>
 <div id="prompts">
   <table><tbody></tbody></table>
   
   <div><button onclick="tryAgain()">Try Again</button></div>
-  <!-- <tr><td class="key">${parseInt(i)+1}</td>
-    <td><button onClick="sayWord(this)">Word</button></td>
-    <td><button onClick="sayDescription(this)">Description</button></td>
-    <td class="word">${words[i].word}</td>
-    <td><input type="text" placeholder="word" onkeypress="checkWord(this)"> 
-      <button onClick="checkWord(this)">Check</button></td>
-    </tr>
-  </div> -->
   
   <!-- <div><button onclick="say('Hello World')">Say Hello World</button></div>
   <div><button onclick="getWords()">Get Words</button></div> -->
