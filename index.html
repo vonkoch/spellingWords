@@ -2,11 +2,10 @@
 <html>
 <body>
 <style>
-  body { font-family: sans-serif; font-size: 11px; }
+  body { font-family: sans-serif; font-size: 1.2em; }
   input.false { color: red; }
   input.correct { background-color: green; color: white; }
   td.word { visibility: hidden; }
-
 </style>
 <script>
     async function getWords() {
@@ -20,6 +19,7 @@
 
     function say(words) {
       var msg = new SpeechSynthesisUtterance(words);
+      msg.rate = 0.6;
       window.speechSynthesis.speak(msg);
     }
 
@@ -213,6 +213,7 @@ function buildPrompts() {
   <table><tbody></tbody></table>
   
   <div><button onclick="tryAgain()">Try Again</button></div>
+  <div><a href="math.html">Multiplication</a></div>
   
   <!-- <div><button onclick="say('Hello World')">Say Hello World</button></div>
   <div><button onclick="getWords()">Get Words</button></div> -->
