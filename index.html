@@ -82,22 +82,22 @@
     }
 
     function sayWord(btn) {
+      event.cancelBubble = true;
       let row = btn.parentNode.parentNode;
       let word = row.querySelector("td.word").textContent;
       say(word);
 
-      let input = row.querySelector("input");
-      input.focus();
+      // let input = row.querySelector("input");
+      // input.focus();
     }
 
     function sayDescription(btn) {
-      event.preventDefault(); // set focus back to input field
       let row = btn.parentNode.parentNode;
       let key = parseInt(row.querySelector("td.key").textContent) - 1;
       say(words()[key].description);
 
-      let input = row.querySelector("input");
-      input.focus();
+      // let input = row.querySelector("input");
+      // input.focus();
     }
 
     function keypress(obj) {
@@ -105,11 +105,21 @@
         // Cancel the default action, if needed
         event.preventDefault();
         checkWord(obj);
+      } else if (event.key === "1") {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        sayWord(obj);
+      } else if (event.key === "2") {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        sayDescription(obj);
       }
     }
 
     function wordsEqual(word1, word2) {
-      return (word1.toLowerCase() === word2.toLowerCase());
+      const w1 = word1.trim().toLowerCase();
+      const w2 = word2.trim().toLowerCase();
+      return ( w1 === w2);
     }
 
     function checkWord(obj) {
@@ -128,6 +138,7 @@
         });
 
         // set focus to next input
+        // document.dispatchEvent(new KeyboardEvent('keydown', {'key': 'tab'}));
         const nextrow = row.nextSibling;
         if(nextrow) {
           const nextinput = nextrow.querySelector("input");
@@ -168,10 +179,16 @@ function buildPrompts() {
       const wordlist = words();
       for(i in wordlist) {
         let row = `<tr><td class="key">${parseInt(i)+1}</td>
-          <td><button onClick="sayWord(this)">Word</button></td>
-          <td ${(typeof wordlist[i] === 'string') ? 'style="display:none"' : ""}><button onClick="sayDescription(this)">Description</button></td>
+          <td><button onClick="sayWord(this); return false;">Word</button></td>
+          <td ${(typeof wordlist[i] === 'string') ? 'style="display:none"' : ""}>
+            <button onClick="sayDescription(this); false">Description</button>
+          </td>
           <td class="word">${(typeof wordlist[i] === 'string') ? wordlist[i] : wordlist[i].word}</td>
-          <td><input type="text" onkeypress="keypress(this)" autocomplete="off" /> <button onClick="checkWord(this)">Check</button></td></tr>`;
+          <td>
+            <input type="text" onkeypress="keypress(this)" autocomplete="off" autocorrect="off" autocapitalize="off" 
+            spellcheck="false" /> 
+            <button onClick="checkWord(this)">Check</button>
+          </td></tr>`;
         let obj = table.insertAdjacentHTML("beforeend",row);
       }
       
