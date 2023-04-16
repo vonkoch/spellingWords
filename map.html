@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<body>
+<style>
+  html { font-family: sans-serif; }
+  html, button, input { font-size: 16px; }
+  input.false { color: red; }
+  input.correct { background-color: green; color: white; }
+  td.word { visibility: hidden; text-align: right; }
+</style>
+<script>
+    function say(words) {
+      var msg = new SpeechSynthesisUtterance(words);
+      msg.rate = 0.9;
+      window.speechSynthesis.speak(msg);
+    }
+
+    const statescvs = `state,abbr,capital
+Alabama,AL,Montgomery
+Alaska,AK,Juneau
+Arizona,AZ,Phoenix
+Arkansas,AR,Little Rock
+California,CA,Sacramento
+Colorado,CO,Denver
+Connecticut,CT,Hartford
+Delaware,DE,Dover
+Florida,FL,Tallahassee
+Georgia,GA,Atlanta
+Hawaii,HI,Honolulu
+Idaho,ID,Boise
+Illinois,IL,Springfield
+Indiana,IN,Indianapolis
+Iowa,IA,Des Moines
+Kansas,KS,Topeka
+Kentucky,KY,Frankfort
+Louisiana,LA,Baton Rouge
+Maine,ME,Augusta
+Maryland,MD,Annapolis
+Massachusetts,MA,Boston
+Michigan,MI,Lansing
+Minnesota,MN,Saint Paul
+Mississippi,MS,Jackson
+Missouri,MO,Jefferson City
+Montana,MT,Helena
+Nebraska,NE,Lincoln
+Nevada,NV,Carson City
+New Hampshire,NH,Concord
+New Jersey,NJ,Trenton
+New Mexico,NM,Santa Fe
+New York,NY,Albany
+North Carolina,NC,Raleigh
+North Dakota,ND,Bismarck
+Ohio,OH,Columbus
+Oklahoma,OK,Oklahoma City
+Oregon,OR,Salem
+Pennsylvania,PA,Harrisburg
+Rhode Island,RI,Providence
+South Carolina,SC,Columbia
+South Dakota,SD,Pierre
+Tennessee,TN,Nashville
+Texas,TX,Austin
+Utah,UT,Salt Lake City
+Vermont,VT,Montpelier
+Virginia,VA,Richmond
+Washington,WA,Olympia
+West Virginia,WV,Charleston
+Wisconsin,WI,Madison
+Wyoming,WY,Cheyenne`;
+
+    const CSVToJSON = (data, delimiter = ',') => {
+        const titles = data.slice(0, data.indexOf('\n')).split(delimiter);
+        return data
+            .slice(data.indexOf('\n') + 1)
+            .split('\n')
+            .map(v => {
+            const values = v.split(delimiter);
+            return titles.reduce(
+                (obj, title, index) => ((obj[title] = values[index]), obj),
+                {}
+            );
+            });
+        };
+
+    function selectedKid() {
+      const kid = document.querySelector('input[name="kid"]:checked').value;
+      return kid;
+    }
+
+    function words() {
+        return CSVToJSON(statescvs);
+    }
+
+    function sayWord(btn) {
+      event.cancelBubble = true;
+      let row = btn.parentNode.parentNode;
+      let word = row.querySelector("td.word").textContent;
+      say(word);
+
+      // let input = row.querySelector("input");
+      // input.focus();
+    }
+
+    function sayCapitalOfState(btn) {
+      event.cancelBubble = true;
+      let row = btn.parentNode.parentNode;
+      let word = "Capital of " + row.querySelector("td.word").textContent;
+      say(word);
+    }
+
+    function sayDescription(btn) {
+      let row = btn.parentNode.parentNode;
+      let key = parseInt(row.querySelector("td.key").textContent) - 1;
+      say(words()[key].description);
+    }
+
+    function keypress(obj) {
+      if (event.key === "Enter") {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            checkWord(obj);
+        } else if (event.key === "1") {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            sayWord(obj);
+      }
+    }
+
+    function wordsEqual(word1, word2) {
+      const w1 = word1.trim().toLowerCase();
+      const w2 = word2.trim().toLowerCase();
+      return ( w1 === w2);
+    }
+
+    function checkWord(obj) {
+        const active = document.activeElement;
+        const row = obj.parentElement.parentElement;
+        const td = obj.parentElement;
+        const wordtd = td.previousElementSibling;
+        const word = wordtd.textContent;
+        const input = td.querySelector("input");
+        const val = input.value;
+
+        if(val !== "") {
+            input.className = wordsEqual(word,val) ? "correct" : "false";
+            wordtd.style.visibility = "visible";
+
+            td.querySelectorAll('button, input').forEach(elem => {
+            elem.disabled = true;
+            });
+
+            // set focus to next input
+            const nextTD = td.nextElementSibling; // null if last td in row
+            if(nextTD) {
+                nextnextTD = nextTD.nextElementSibling; // skip the word column
+                if(nextnextTD) {
+                    const nextinput = nextnextTD.querySelector("input");
+                    nextinput.focus();
+                }
+            } else {
+                const nextrow = row.nextElementSibling;
+                if(nextrow) {
+                    const nextinput = nextrow.querySelector("input"); 
+                    nextinput.focus();
+                }
+            }
+        } else {
+            input.focus();
+        }
+    }
+
+    function tryAgain() {
+      // re-enable all inputs
+      const table = document.querySelector('tbody')
+      table.querySelectorAll('button, input').forEach(elem => {
+          elem.disabled = false;
+        });
+
+      // hide the words
+      table.querySelectorAll('td.word').forEach(elem => {
+        elem.style.visibility = "hidden";
+      });
+    }
+
+function buildPrompts() {
+      const table = document.querySelector('tbody');
+
+      const wordlist = words();
+      for(i in wordlist) {
+        let row = `<tr><td class="key">${wordlist[i].abbr}</td>
+          <td><button onClick="sayWord(this); return false;">State</button></td>
+          <td class="word">${wordlist[i].state}</td>
+          <td>
+            <input type="text" onkeypress="keypress(this)" autocomplete="off" autocorrect="off" autocapitalize="off" 
+            spellcheck="false" onfocusin="sayWord(this)" /> 
+            <button onClick="checkWord(this)">Check</button>
+          </td>
+          <td class="word">${wordlist[i].capital}</td>
+          <td>
+            <input type="text" onkeypress="keypress(this)" autocomplete="off" autocorrect="off" autocapitalize="off" 
+            spellcheck="false" onfocusin="sayCapitalOfState(this)" /> 
+            <button onClick="checkWord(this)">Check</button>
+          </td>
+          </tr>`;
+        let obj = table.insertAdjacentHTML("beforeend",row);
+      }
+      
+      setTimeout(() => {
+        const input = table.querySelector('input');
+        input.focus();
+      }, "300");
+    }
+
+    window.onload = function() {
+      buildPrompts();
+    }
+    
+</script>
+<div id="prompts">
+  <table>
+    <tbody></tbody>
+</table>
+  
+<div><button onclick="tryAgain()">Try Again</button></div>
+
+</body>
+</html>
+
+
