@@ -4,9 +4,9 @@
 <style>
   html { font-family: sans-serif; }
   html, button, input { font-size: 16px; }
-  input.false { color: red; }
-  input.correct { background-color: green; color: white; }
-  td.word { visibility: hidden; }
+  input.false { color: red; text-transform: capitalize; }
+  input.correct { background-color: green; color: white; text-transform: capitalize; }
+  td.word { visibility: hidden; text-align: right;  }
 </style>
 <script>
     async function getWords() {
@@ -20,11 +20,69 @@
 
     function say(words) {
       var msg = new SpeechSynthesisUtterance(words);
-      msg.rate = 0.6;
+      msg.rate = 0.8;
       window.speechSynthesis.speak(msg);
     }
 
-    const avkwords230320 = [
+    const CSVToJSON = (data, delimiter = ',') => {
+        const titles = data.slice(0, data.indexOf('\n')).split(delimiter);
+        return data
+            .slice(data.indexOf('\n') + 1)
+            .split('\n')
+            .map(v => {
+            const values = v.split(delimiter);
+            return titles.reduce(
+                (obj, title, index) => ((obj[title] = values[index]), obj),
+                {}
+            );
+            });
+        };
+
+    const avkWordsUnit25 = CSVToJSON(`word,description
+director,The play has a great director.
+pitcher,The pitcher threw a fastball.
+commander,They saluted their commander.
+colonist,A colonist settled in Jamestown.
+typist,Are you a fast typist?
+scientist,The scientist studied sea life.
+editor,An editor corrects errors in writing.
+homemaker,A homemaker manages the home.
+operator,The machine needs one operator.
+professor,My neighbor is a college professor.
+creditor,A creditor expects to be paid.
+instructor,My piano instructor is talented.
+artist,The sidewalk artist draws with chalk.
+passenger,A passenger boards the bus.
+inventor,Thomas Edison was an inventor.
+tourist,The tourist visited a historic house.
+cyclist,Every cyclist needs a helmet.
+actor,The actor bowed and left the stage.
+publisher,A publisher makes and sells books.
+gardener,That gardener is fond of roses.`);
+
+    const avkWordsUnit26 = CSVToJSON(`word,description
+soldiers,Many soldiers defended the country.
+pianos,These pianos need to be tuned.
+essays,Sam enjoys essays about nature.
+chiefs,Four fire chiefs got awards.
+treaties,The treaties were signed in 1918.
+countries,The two countries made peace.
+luggage,Karla's luggage is green plaid.
+skis,We should wax these skis.
+characters,The story has two main characters.
+badges,You can earn badges in the club.
+valleys,The sheep graze in the valleys.
+palaces,Most French palaces have fountains.
+beliefs,Your beliefs may change someday.
+gentlemen,These gentlemen have had dinner.
+latches,Release the latches on that door.
+envelopes,Put these letters into envelopes.
+loaves,The round loaves are wheat bread.
+groceries,We need groceries from the store.
+heroes,Legends usually have brave heroes.
+diaries,One day I may publish my diaries.`);
+
+    const avkWordsUnit27 = [
       { "word": "bimonthly", "description": "I write a bimonthly bulletin." },
       { "word": "midday", "description": "By midday the bud had opened." },
       { "word": "semicircle", "description": "We sat in a semicircle." },
@@ -47,7 +105,7 @@
       { "word": "semiformal", "description": "It was a semiformal event." }
     ];
     
-    const avkwords = [
+    const avkWordsUnit28 = [
       { "word": "generous", "description": "They made a generous donation." },
       { "word": "message", "description": "She left a message for us." },
       { "word": "stranger", "description": "A stranger walked into the café." },
@@ -70,6 +128,28 @@
       { "word": "average", "description": "What is the average temperature?" }
     ];
 
+    const avkWordsUnit29 = CSVToJSON(`word,description
+vanity,Some movie stars display vanity.
+humanity,A doctor can help humanity.
+sickness,The baby's sickness lasted a week.
+amusement,A playground provides amusement.
+detective,A detective looks for evidence.
+loyalty,Her loyalty is to her family.
+majority,The majority of us wanted a party.
+gentleness,Their gentleness is admirable.
+argument,The argument is about politics.
+humidity,This humidity curls my hair.
+ability,Your singing ability is exceptional.
+blindness,Some blindness begins at birth.
+activity,An art activity would be fun.
+relative,I have a relative who is famous.
+employment,Rosa needs summer employment.
+specialty,Cherry pie is their specialty.
+creativity,With creativity, we can improve it.
+arrangement,The flower arrangement goes here.
+swiftness,The cheetah is known for swiftness.
+tardiness,This note will explain my tardiness.`);
+
     let vvkwords = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ]
 
 
@@ -79,7 +159,10 @@
     }
 
     function words() {
-      return selectedKid() == "avk" ? avkwords : vvkwords;
+      return selectedKid() == "avk" ? 
+        avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
+        // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
+        : vvkwords;
     }
 
     function sayWord(btn) {
@@ -216,8 +299,5 @@ function buildPrompts() {
   <div><button onclick="tryAgain()">Try Again</button></div>
   <div><a href="math.html">Multiplication</a></div>
   <div><a href="map.html">Map</a></div>
-  
-  <!-- <div><button onclick="say('Hello World')">Say Hello World</button></div>
-  <div><button onclick="getWords()">Get Words</button></div> -->
   </body>
 </html>

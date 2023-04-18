@@ -4,9 +4,9 @@
 <style>
   html { font-family: sans-serif; }
   html, button, input { font-size: 16px; }
-  input.false { color: red; }
-  input.correct { background-color: green; color: white; }
-  td.word { visibility: hidden; text-align: right; }
+  input.false { color: red; text-transform: capitalize; }
+  input.correct { background-color: green; color: white; text-transform: capitalize; }
+  td.word { visibility: hidden; text-align: right;  }
 </style>
 <script>
     function say(words) {
@@ -171,9 +171,15 @@ Wyoming,WY,Cheyenne`;
     function tryAgain() {
       // re-enable all inputs
       const table = document.querySelector('tbody')
-      table.querySelectorAll('button, input').forEach(elem => {
-          elem.disabled = false;
-        });
+      table.querySelectorAll('button:disabled, input:disabled').forEach(elem => {
+        elem.disabled = false;
+      });
+
+      // remove the correct and false classnames from input elements
+      table.querySelectorAll('input.correct, input.false').forEach(elem => {
+        elem.classList.remove("correct");
+        elem.classList.remove("false");      
+      });
 
       // hide the words
       table.querySelectorAll('td.word').forEach(elem => {
@@ -220,8 +226,9 @@ function buildPrompts() {
     <tbody></tbody>
 </table>
   
-<div><button onclick="tryAgain()">Try Again</button></div>
-
+<div><button onclick="tryAgain()"> Try Again </button></div>
+<div><a href="math.html">Multiplication</a></div>
+<div><a href="map.html">Map</a></div>
 </body>
 </html>
 
