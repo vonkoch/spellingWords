@@ -150,8 +150,9 @@ arrangement,The flower arrangement goes here.
 swiftness,The cheetah is known for swiftness.
 tardiness,This note will explain my tardiness.`);
 
-    let vvkwords = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ]
+    const vvkwWordsBefore = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ];
 
+    const vvkWordsFri20230421 = [ "sky", "find", "night", "high", "fly", "try", "light", "dry", "right", "mind", "eye", "buy" ];
 
     function selectedKid() {
       const kid = document.querySelector('input[name="kid"]:checked').value;
@@ -162,7 +163,7 @@ tardiness,This note will explain my tardiness.`);
       return selectedKid() == "avk" ? 
         avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
         // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
-        : vvkwords;
+        : vvkWordsFri20230421;
     }
 
     function sayWord(btn) {
