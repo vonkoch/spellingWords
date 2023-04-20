@@ -38,6 +38,58 @@
             });
         };
 
+    const avkWordsChosen20230421 = CSVToJSON(`word,description
+    director,The play has a great director.
+pitcher,The pitcher threw a fastball.
+scientist,The scientist studied sea life.
+editor,An editor corrects errors in writing.
+professor,My neighbor is a college professor.
+creditor,A creditor expects to be paid.
+artist,The sidewalk artist draws with chalk.
+passenger,A passenger boards the bus.
+tourist,The tourist visited a historic house.
+actor,The actor bowed and left the stage.
+soldiers,Many soldiers defended the country.
+pianos,These pianos need to be tuned.
+chiefs,Four fire chiefs got awards.
+countries,The two countries made peace.
+skis,We should wax these skis.
+characters,The story has two main characters.
+valleys,The sheep graze in the valleys.
+beliefs,Your beliefs may change someday.
+envelopes,Put these letters into envelopes.
+heroes,Legends usually have brave heroes.
+midday,By midday the bud had opened.
+semicircle,We sat in a semicircle.
+bicycle,Did you ride a bicycle to school?
+midair,An eagle dived in midair.
+tricycle,The tricycle was his favorite gift.
+midnight,At midnight a new year begins.
+semisweet,Taste this semisweet chocolate.
+triangle,The flag is folded into a triangle.
+biweekly,We have gym class biweekly.
+midland,The midland has no seashore.
+message,She left a message for us.
+stranger,A stranger walked into the café.
+margin,Leave a margin of at least an inch.
+energy,Exercise gives you more energy.
+college,We have a small college in our town.
+imagine,I like to imagine other worlds.
+apology,The speaker made a public apology.
+arrange,Can you arrange a special meeting?
+ledger,A bookkeeper keeps an accurate ledger.
+average,What is the average temperature?
+vanity,Some movie stars display vanity.
+sickness,The baby's sickness lasted a week.
+amusement,A playground provides amusement.
+detective,A detective looks for evidence.
+argument,The argument is about politics.
+ability,Your singing ability is exceptional.
+activity,An art activity would be fun.
+relative,I have a relative who is famous.
+specialty,Cherry pie is their specialty.
+arrangement,The flower arrangement goes here.`);
+
     const avkWordsUnit25 = CSVToJSON(`word,description
 director,The play has a great director.
 pitcher,The pitcher threw a fastball.
@@ -161,7 +213,8 @@ tardiness,This note will explain my tardiness.`);
 
     function words() {
       return selectedKid() == "avk" ? 
-        avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
+        avkWordsChosen20230421
+        // avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
         // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
         : vvkWordsFri20230421;
     }
