@@ -202,9 +202,33 @@ arrangement,The flower arrangement goes here.
 swiftness,The cheetah is known for swiftness.
 tardiness,This note will explain my tardiness.`);
 
+    const avkWordsUnit31 = CSVToJSON(`word,description
+diamond,The diamond sparkled in the light.
+handsome,Morris is a handsome cat.
+truly,The class truly enjoys doing math.
+camera,We will not forget the camera.
+language,How do babies learn a language?
+beautiful,Look at the beautiful bird.
+government,The city government approved the tax.
+umbrella,We sat under the beach umbrella.
+thorough,That house painter is very thorough.
+judgment,Always use your best judgment.
+separate,I can separate the coins from the bills.
+suppose,Do you suppose they got lost?
+chocolate,It was a chocolate birthday cake.
+route,This route goes across the river.
+cousin,My cousin lives nearby.
+sincerely,I sincerely hope he arrives early.
+address,Our new address is 12 Spring Lane.
+poison,The skull symbolizes poison.
+although,I'll help, although I'm not sure how.
+skiing,I've never been skiing.`)
+
     const vvkwWordsBefore = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ];
 
     const vvkWordsFri20230421 = [ "sky", "find", "night", "high", "fly", "try", "light", "dry", "right", "mind", "eye", "buy" ];
+
+    const vvkWordsFri20230428 = [ "liked", "hoping", "baked", "using", "chased", "making", "closed", "hiding", "named", "riding" ];
 
     function selectedKid() {
       const kid = document.querySelector('input[name="kid"]:checked').value;
@@ -213,10 +237,14 @@ tardiness,This note will explain my tardiness.`);
 
     function words() {
       return selectedKid() == "avk" ? 
-        avkWordsChosen20230421
+        avkWordsUnit31
+        // avkWordsChosen20230421
         // avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
         // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
-        : vvkWordsFri20230421;
+        : 
+        vvkWordsFri20230428
+        // vvkWordsFri20230421
+        ;
     }
 
     function sayWord(btn) {
