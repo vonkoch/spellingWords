@@ -341,6 +341,7 @@ skiing,I've never been skiing.`)
 
 function buildPrompts() {
       const table = document.querySelector('tbody');
+      table.replaceChildren();
 
       const wordlist = words();
       for(i in wordlist) {
