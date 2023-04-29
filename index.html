@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<body>
 <style>
   html { font-family: sans-serif; }
   html, button, input { font-size: 16px; }
@@ -224,6 +223,94 @@ poison,The skull symbolizes poison.
 although,I'll help, although I'm not sure how.
 skiing,I've never been skiing.`)
 
+    const avkWordsUnit32 = CSVToJSON(`word,description
+childish,It is childish to stomp off like that.
+joyous,Singing can be a joyous experience.
+energetic,Pip is an active, energetic puppy.
+bluish,My lips turned bluish in the icy sea.
+pleasant,A springtime stroll is pleasant.
+basic,We will start with basic algebra.
+humorous,The humorous book made me laugh.
+stylish,That hat was stylish in the fifties.
+cubic,The jar's volume is a cubic meter.
+dramatic,The dramatic scenes were moving.
+marvelous,We had a marvelous time today.
+famous,The Mona Lisa is a famous painting.
+adventurous,A sailor needs an adventurous spirit.
+vacant,This garden was once a vacant lot.
+dangerous,Toys on stairs are dangerous.
+radiant,The sky was radiant over the lake.
+vigorous,I went for a vigorous swim.
+foolish,It is foolish to destroy a friendship.
+mysterious,A mysterious ship appeared at night.
+selfish,They were selfish not to offer help.`);
+
+    const avkWordsUnit33 = CSVToJSON(`word,description
+delight,The children shouted with delight.
+exit,Watch for the exit sign, please.
+public,We swim at the public pool.
+increase,Was there a price increase?
+freedom,I enjoy freedom of speech.
+lengthen,In the evening, shadows lengthen.
+backward,Can you say the alphabet backward?
+liberty,In a free land, you have liberty.
+narrow,The road is too narrow for the truck.
+eastern,I live in eastern Tennessee.
+entire,The entire class was silent.
+western,The seacoast is in western Oregon.
+decrease,We should decrease the ticket price.
+private,They had a private conversation.
+whole,This whole day has been wonderful.
+extend,Firefighters will extend a ladder.
+forward,Move your chairs forward.
+pleasure,With pleasure, I will help you.
+entrance,This entrance has double doors.
+slender,A slender gazelle nibbled grass.`);
+
+    const avkWordsUnit34 = CSVToJSON(`word,description
+import,They import olives from Italy.
+telephoto,My camera has a telephoto lens.
+eject,Will the ref eject the player?
+erupt,I want to see the volcano erupt.
+disrupt,A parrot will disrupt the class.
+biography,I read a biography.
+photocopy,Send a photocopy of your paper.
+centimeter,That ant is a centimeter long.
+prospect,We can prospect for gold.
+script,I wrote a script for a play.
+project,What is your project this week?
+dictate,The rules dictate what is allowed.
+telecast,Are you ready for the telecast?
+predict,I predict that you will win.
+export,We export wheat to Japan.
+thermometer,The thermometer says fifty degrees.
+autobiography,I will write an autobiography.
+manuscript,The editor read the manuscript.
+photograph,What a great photograph of you!
+respect,We need to respect each other.`);
+
+    const avkWordsUnit35 = CSVToJSON(`word,description
+1. patriotism,We fly the flag to show patriotism.
+2. zoology,Study zoology if you love animals.
+3. independence,I value my independence.
+4. distance,I walk a long distance to school.
+5. journalist,A journalist asks many questions.
+6. enjoyable,That meal was very enjoyable.
+7. ecology,I like to read books about ecology.
+8. legible,Good handwriting is legible.
+9. capitalism,Profit is the basis of capitalism.
+10. divisible,Is nine divisible by three?
+11. phobia,Fear of heights is a phobia.
+12. difference,You can make a big difference.
+13. instance,For instance, this writing is great.
+14. acceptable,It's acceptable to pay by check.
+15. chemist,The chemist fills the test tube.
+16. elegance,The dancer moves with elegance.
+17. reference,I need a good reference book.
+18. respectable,A tie game is still respectable.
+19. attendance,The teacher took attendance.
+20. biology,I would like to study biology.`);
+
     const vvkwWordsBefore = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ];
 
     const vvkWordsFri20230421 = [ "sky", "find", "night", "high", "fly", "try", "light", "dry", "right", "mind", "eye", "buy" ];
@@ -237,7 +324,7 @@ skiing,I've never been skiing.`)
 
     function words() {
       return selectedKid() == "avk" ? 
-        avkWordsUnit31
+        avkWordsUnit32
         // avkWordsChosen20230421
         // avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
         // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
@@ -339,7 +426,7 @@ skiing,I've never been skiing.`)
       }, "300");
     }
 
-function buildPrompts() {
+    function buildPrompts() {
       const table = document.querySelector('tbody');
       table.replaceChildren();
 
@@ -368,9 +455,9 @@ function buildPrompts() {
     window.onload = function() {
       buildPrompts();
     }
-    
 </script>
-<div>
+<body>
+  <div>
   <input type="radio" id="avk" name="kid" value="avk" onclick="toggleKid(this)" checked>
   <label for="avk" onclick="toggleKid(this)">AvK</label>
   <input type="radio" id="vvk" name="kid" value="vvk" onclick="toggleKid(this)" onclick="toggleKid(this)">
