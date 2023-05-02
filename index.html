@@ -8,14 +8,14 @@
   td.word { visibility: hidden; text-align: right; text-transform: capitalize; }
 </style>
 <script>
-    async function getWords() {
-        const requestURL = 'words.json';
-        const request = new Request(requestURL);
+    // async function getWords() {
+    //     const requestURL = 'words.json';
+    //     const request = new Request(requestURL);
 
-        const response = await fetch(request);
-        const words = await response.json();
-        return words;
-    }
+    //     const response = await fetch(request);
+    //     const words = await response.json();
+    //     return words;
+    // }
 
     function say(words) {
       var msg = new SpeechSynthesisUtterance(words);
@@ -317,6 +317,28 @@ respect,We need to respect each other.`);
 
     const vvkWordsFri20230428 = [ "liked", "hoping", "baked", "using", "chased", "making", "closed", "hiding", "named", "riding" ];
 
+    const vvkWordsFri20230505 = CSVToJSON(`word,description
+named,I named my frenchy English
+high,How high can you jump?
+zoo,I saw animals at the zoo
+moon,It was a full moon
+liked,Like liked his shoes
+good,That's a good find
+night,The night was dark
+mind,My mind is sharp
+riding,I was riding a horse
+took,I took my lunch and ate it
+sky,I looked up into the sky
+using,I'm using my parent's keys
+hoping,I'm hoping I will win
+room,My room is clean
+find,I will help you find your keys
+making,I'm making a cake
+hook,I hang my jacket on the hook
+light,I turn on the light when it's dark
+chased,I chased my brother up the stairs
+fly,I fly to europe if I can`);
+
     function selectedKid() {
       const kid = document.querySelector('input[name="kid"]:checked').value;
       return kid;
@@ -329,7 +351,8 @@ respect,We need to respect each other.`);
         // avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
         // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
         : 
-        vvkWordsFri20230428
+        vvkWordsFri20230505
+        // vvkWordsFri20230428
         // vvkWordsFri20230421
         ;
     }
@@ -440,9 +463,10 @@ respect,We need to respect each other.`);
           <td class="word">${(typeof wordlist[i] === 'string') ? wordlist[i] : wordlist[i].word}</td>
           <td>
             <input type="text" onkeypress="keypress(this)" autocomplete="off" autocorrect="off" autocapitalize="off" 
-            spellcheck="false" /> 
+            spellcheck="false"  onfocusin="sayWord(this)" /> 
             <button onClick="checkWord(this)">Check</button>
-          </td></tr>`;
+          </td>
+          </tr>`;
         let obj = table.insertAdjacentHTML("beforeend",row);
       }
       
@@ -465,8 +489,9 @@ respect,We need to respect each other.`);
 </div>
 <div id="prompts">
   <table><tbody></tbody></table>
+</div> 
   
-  <div><button onclick="tryAgain()">Try Again</button></div>
+  <div><button onclick="tryAgain()"> Try Again </button></div>
   <div><a href="math.html">Multiplication</a></div>
   <div><a href="map.html">Map</a></div>
   </body>
