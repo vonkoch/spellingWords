@@ -251,9 +251,9 @@ exit,Watch for the exit sign, please.
 public,We swim at the public pool.
 increase,Was there a price increase?
 freedom,I enjoy freedom of speech.
-lengthen,In the evening, shadows lengthen.
+lengthen,In the evening shadows lengthen.
 backward,Can you say the alphabet backward?
-liberty,In a free land, you have liberty.
+liberty,In a free land you have liberty.
 narrow,The road is too narrow for the truck.
 eastern,I live in eastern Tennessee.
 entire,The entire class was silent.
@@ -263,7 +263,7 @@ private,They had a private conversation.
 whole,This whole day has been wonderful.
 extend,Firefighters will extend a ladder.
 forward,Move your chairs forward.
-pleasure,With pleasure, I will help you.
+pleasure,With pleasure I will help you.
 entrance,This entrance has double doors.
 slender,A slender gazelle nibbled grass.`);
 
@@ -346,7 +346,8 @@ fly,I fly to europe if I can`);
 
     function words() {
       return selectedKid() == "avk" ? 
-        avkWordsUnit32
+        avkWordsUnit33
+        // avkWordsUnit32
         // avkWordsChosen20230421
         // avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
         // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
@@ -463,7 +464,7 @@ fly,I fly to europe if I can`);
           <td class="word">${(typeof wordlist[i] === 'string') ? wordlist[i] : wordlist[i].word}</td>
           <td>
             <input type="text" onkeypress="keypress(this)" autocomplete="off" autocorrect="off" autocapitalize="off" 
-            spellcheck="false"  onfocusin="sayWord(this)" /> 
+            spellcheck="false" onfocusin="sayWord(this)" /> 
             <button onClick="checkWord(this)">Check</button>
           </td>
           </tr>`;
