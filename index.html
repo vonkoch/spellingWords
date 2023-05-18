@@ -19,7 +19,7 @@
 
     function say(words) {
       var msg = new SpeechSynthesisUtterance(words);
-      msg.rate = 0.8;
+      // msg.rate = 0.95;
       window.speechSynthesis.speak(msg);
     }
 
@@ -346,15 +346,11 @@ fly,I fly to europe if I can`);
 
     function words() {
       return selectedKid() == "avk" ? 
-        avkWordsUnit33
-        // avkWordsUnit32
-        // avkWordsChosen20230421
+        avkWordsUnit34
         // avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
         // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
         : 
         vvkWordsFri20230505
-        // vvkWordsFri20230428
-        // vvkWordsFri20230421
         ;
     }
 
