@@ -339,7 +339,23 @@ light,I turn on the light when it's dark
 chased,I chased my brother up the stairs
 fly,I fly to europe if I can`);
 
-    const vvkWordsFri20230901 = [ "mix", "milk", "smell", "last", "head", "friend", "class", "left", "thick", "send", "thin", "stick", "empty", "glance"];
+    const vvkWordsFri20230901x = [ "mix", "milk", "smell", "last", "head", "friend", "class", "left", "thick", "send", "thin", "stick", "empty", "glance"];
+
+    const vvkWordsFri20230901 = CSVToJSON(`word,description
+mix, Let's mix the ingredients.
+milk, I drink milk every morning.
+smell, The rotten egg smells real bad.
+last, This is the last time I will tell you.
+head, I'm looking at your head.
+friend, You are my best friend.
+class, I saw you in class today.
+left, Over there on the left.
+thick, That branch is thick enough to climb on.
+send, I will send the letter to Grandma and Grandpa.
+thin, This branch is way to thin to climb on.
+stick, Let's use the stick to poke the bear.
+empty, This glass is empty.
+glance, I took a quick glance at the text.`);
 
     function selectedKid() {
       const kid = document.querySelector('input[name="kid"]:checked').value;
