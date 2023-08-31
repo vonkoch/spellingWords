@@ -311,6 +311,28 @@ respectable,A tie game is still respectable.
 attendance,The teacher took attendance.
 biology,I would like to study biology.`);
 
+    const avkWords6thUnit1 = CSVToJSON(`word,description
+pattern, The leaves formed a colorful pattern.
+album, He arranged his pictures in an album.
+labor, Scrubbing the floor was difficult labor.
+vacation, We delayed our summer vacation.
+exactly, The book cost exactly five dollars.
+chapter, I have read the first chapter.
+survey, The engineer will survey the land.
+detain, I must not detain you any longer.
+rapid, The rain caused a rapid river current.
+cancel, They might cancel the soccer game.
+obtain, You must obtain a permit to park here.
+admit, This ticket will admit one person.
+trait, His sense of humor is his best trait.
+accent, She speaks with a British accent.
+complain, They often complain about the service.
+advance, The team will advance to the next level.
+natural, He has natural artistic ability.
+daydream, You must try not to daydream in class.
+favorite, They played my favorite song.
+behave, I am trying to teach my dog to behave.`);
+
     const vvkwWordsBefore = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ];
 
     const vvkWordsFri20230421 = [ "sky", "find", "night", "high", "fly", "try", "light", "dry", "right", "mind", "eye", "buy" ];
@@ -364,7 +386,7 @@ glance, I took a quick glance at the text.`);
 
     function words() {
       return selectedKid() == "avk" ? 
-        avkWordsUnit35
+        avkWords6thUnit1
         // avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
         // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
         : 
