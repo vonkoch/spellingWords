@@ -401,6 +401,24 @@ stick, Let's use the stick to poke the bear.
 empty, This glass is empty.
 glance, I took a quick glance at the text.`);
 
+const vvkWordsFri20230908 = CSVToJSON(`word,description
+have, I have one dollar.
+haven't, I haven't a clue what I am doing.
+found, I found my phone.
+around, I am around all weekend.
+one, I have one cookie.
+than, I am heavier than you.
+then, First I went home, then I went to work.
+them, I was looking for them.
+before, I met you before.
+because, I love you because you are awesome.
+other, I like the other pen too.
+mother, I love my mother.
+family, I love my family.
+cousin, my cousin lives in Seattle.
+everybody, I love everybody.
+guess, I guess who won.`);
+
     function selectedKid() {
       const kid = document.querySelector('input[name="kid"]:checked').value;
       return kid;
@@ -412,7 +430,7 @@ glance, I took a quick glance at the text.`);
         // avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
         // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
         : 
-        vvkWordsFri20230901
+        vvkWordsFri20230908
         ;
     }
 
