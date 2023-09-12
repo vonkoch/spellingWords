@@ -355,6 +355,28 @@ attend, Hundreds will attend tonight's lecture.
 release, I will release the name of the winner.
 meadow, Plant life abounds in the meadow.`);
 
+    const avkWords6thUnit3 = CSVToJSON(`word,description
+attic, I found the old clothes in the attic.
+ideal, The weather is ideal for sailing.
+limit, The speed limit is forty miles an hour.
+confide, I confide my worries to my friend.
+district, The district covers five square miles.
+disguise, He tried to disguise his handwriting.
+exhibit, The art will be on exhibit for a month.
+classify, Librarians classify novels as literature.
+require, Laws will require the use of seat belts.
+permit, We will permit you to leave at noon.
+consider, I consider him to be an expert on cars.
+item, We had one item in our grocery cart.
+empire, The empire fell in the fifth century.
+satisfy, We try to satisfy all of our customers.
+system, The bank installed a new alarm system.
+strike, The workers voted to begin the strike.
+assign, Your teacher will assign your seats.
+apply, I decided to apply for the job.
+inherit, The baby might inherit your blue eyes.
+examine, The detective will examine the evidence.`);
+          
     const vvkwWordsBefore = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ];
 
     const vvkWordsFri20230421 = [ "sky", "find", "night", "high", "fly", "try", "light", "dry", "right", "mind", "eye", "buy" ];
@@ -401,7 +423,7 @@ stick, Let's use the stick to poke the bear.
 empty, This glass is empty.
 glance, I took a quick glance at the text.`);
 
-const vvkWordsFri20230908 = CSVToJSON(`word,description
+    const vvkWordsFri20230908 = CSVToJSON(`word,description
 have, I have one dollar.
 haven't, I haven't a clue what I am doing.
 found, I found my phone.
@@ -426,7 +448,7 @@ guess, I guess who won.`);
 
     function words() {
       return selectedKid() == "avk" ? 
-        avkWords6thUnit2
+        avkWords6thUnit3
         // avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
         // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
         : 
