@@ -441,6 +441,22 @@ cousin, my cousin lives in Seattle.
 everybody, I love everybody.
 guess, I guess who won.`);
 
+    const vvkWordsFri20230915 = CSVToJSON(`word,description
+pond, the ducks swim in the pond.
+luck, you bring me good luck.
+drop, don't drop the cake.
+lot, you have a lot of cake.
+rub, rub your eyes so you can see.
+does, what does he do? 
+drum, can you drum a rythem? 
+sock, please wear socks in your tennis shoes.
+hunt, they used to hunt for dears.
+crop, corn is a tasty crop.
+shut, please shut the fridge. 
+won, you won your soccer game.
+dodge, I will dodge the question.
+dusk, I will play from dawn to dusk.`);
+
     function selectedKid() {
       const kid = document.querySelector('input[name="kid"]:checked').value;
       return kid;
@@ -452,7 +468,7 @@ guess, I guess who won.`);
         // avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
         // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
         : 
-        vvkWordsFri20230908
+        vvkWordsFri20230915
         ;
     }
 
