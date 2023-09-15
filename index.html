@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+  <title>School Self Practice</title>
 <style>
   html { font-family: sans-serif; }
   html, button, input { font-size: 16px; }
@@ -376,7 +377,29 @@ assign, Your teacher will assign your seats.
 apply, I decided to apply for the job.
 inherit, The baby might inherit your blue eyes.
 examine, The detective will examine the evidence.`);
-          
+
+const avkWords6thUnit4 = CSVToJSON(`word,description
+profit, The store made a profit from the sale.
+oppose, The mayor will oppose the new highway.
+bronze, The lamp base is made of solid bronze.
+video, I watched a video about dog training.
+constant, The constant humming was annoying.
+approach, Slow down as you approach the light.
+pose, The photographer asked us to pose.
+associate, She consulted her business associate.
+contact, I use the Internet to contact friends.
+opportunity, I cannot pass up this opportunity.
+positive, She is positive that she saw them.
+donate, He will donate the proceeds to charity.
+stereo, The stereo speakers are ten feet apart.
+beyond, We drove beyond our destination.
+charcoal, He sketched the portrait in charcoal.
+notice, She did not notice the time.
+opposite, We stood on opposite sides of the room.
+emotion, It's a play filled with emotion.
+project, The class project is nearly done.
+respond, They did not respond to my phone call.`);
+
     const vvkwWordsBefore = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ];
 
     const vvkWordsFri20230421 = [ "sky", "find", "night", "high", "fly", "try", "light", "dry", "right", "mind", "eye", "buy" ];
@@ -464,7 +487,7 @@ dusk, I will play from dawn to dusk.`);
 
     function words() {
       return selectedKid() == "avk" ? 
-        avkWords6thUnit3
+        avkWords6thUnit4
         // avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
         // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
         : 
@@ -597,17 +620,17 @@ dusk, I will play from dawn to dusk.`);
 </script>
 <body>
   <div>
-  <input type="radio" id="avk" name="kid" value="avk" onclick="toggleKid(this)" checked>
-  <label for="avk" onclick="toggleKid(this)">AvK</label>
-  <input type="radio" id="vvk" name="kid" value="vvk" onclick="toggleKid(this)" onclick="toggleKid(this)">
-  <label for="vvk">VvK</label><br>
-</div>
-<div id="prompts">
-  <table><tbody></tbody></table>
-</div> 
+    <input type="radio" id="avk" name="kid" value="avk" onclick="toggleKid(this)" checked>
+    <label for="avk" onclick="toggleKid(this)">AvK</label>
+    <input type="radio" id="vvk" name="kid" value="vvk" onclick="toggleKid(this)" onclick="toggleKid(this)">
+    <label for="vvk">VvK</label><br>
+  </div>
+  <div id="prompts">
+    <table><tbody></tbody></table>
+  </div> 
   
   <div><button onclick="tryAgain()"> Try Again </button></div>
   <div><a href="math.html">Multiplication</a></div>
   <div><a href="map.html">Map</a></div>
-  </body>
+</body>
 </html>
