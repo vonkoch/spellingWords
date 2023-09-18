@@ -20,7 +20,7 @@
 
     function say(words) {
       var msg = new SpeechSynthesisUtterance(words);
-      // msg.rate = 0.95;
+      msg.rate = 0.8;
       window.speechSynthesis.speak(msg);
     }
 
@@ -378,7 +378,7 @@ apply, I decided to apply for the job.
 inherit, The baby might inherit your blue eyes.
 examine, The detective will examine the evidence.`);
 
-const avkWords6thUnit4 = CSVToJSON(`word,description
+    const avkWords6thUnit4 = CSVToJSON(`word,description
 profit, The store made a profit from the sale.
 oppose, The mayor will oppose the new highway.
 bronze, The lamp base is made of solid bronze.
@@ -399,6 +399,28 @@ opposite, We stood on opposite sides of the room.
 emotion, It's a play filled with emotion.
 project, The class project is nearly done.
 respond, They did not respond to my phone call.`);
+
+const avkWords6thUnit5 = CSVToJSON(`word,description
+stubborn, The stubborn cat will not move.
+computer, Our files are on the computer.
+customer, The customer waited in line.
+contribute, I will contribute to the charity.
+budge, We could not budge the heavy rock.
+barbecue, I will serve chicken at the barbecue.
+union, The first colonies formed a union.
+dispute, The company settled the dispute.
+community, We planned a community picnic.
+uniform, Each officer will wear a uniform.
+smudge, The paint will smudge if it is wet.
+custody, The thief is in police custody.
+bugle, You will hear the bugle at dawn.
+confuse, Too many details will confuse us.
+acute, A bad sprain causes acute pain.
+insult, The comment did not insult me.
+suffer, Some people suffer from back pain.
+punish, We never punish our puppy.
+accuse, Do not accuse me of laziness.
+result, The contest result was announced.`);
 
     const vvkwWordsBefore = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ];
 
@@ -487,7 +509,7 @@ dusk, I will play from dawn to dusk.`);
 
     function words() {
       return selectedKid() == "avk" ? 
-        avkWords6thUnit4
+        avkWords6thUnit5
         // avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
         // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
         : 
