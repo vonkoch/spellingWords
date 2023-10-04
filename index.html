@@ -90,7 +90,7 @@
       specialty,Cherry pie is their specialty.
       arrangement,The flower arrangement goes here.`);
 
-    const avkWordsUnit25 = CSVToJSON(`word,description
+    const avkWords5thUnit25 = CSVToJSON(`word,description
       director,The play has a great director.
       pitcher,The pitcher threw a fastball.
       commander,They saluted their commander.
@@ -112,7 +112,7 @@
       publisher,A publisher makes and sells books.
       gardener,That gardener is fond of roses.`);
 
-    const avkWordsUnit26 = CSVToJSON(`word,description
+    const avkWords5thUnit26 = CSVToJSON(`word,description
       soldiers,Many soldiers defended the country.
       pianos,These pianos need to be tuned.
       essays,Sam enjoys essays about nature.
@@ -134,7 +134,7 @@
       heroes,Legends usually have brave heroes.
       diaries,One day I may publish my diaries.`);
 
-    const avkWordsUnit27 = [
+    const avkWords5thUnit27 = [
       { "word": "bimonthly", "description": "I write a bimonthly bulletin." },
       { "word": "midday", "description": "By midday the bud had opened." },
       { "word": "semicircle", "description": "We sat in a semicircle." },
@@ -157,7 +157,7 @@
       { "word": "semiformal", "description": "It was a semiformal event." }
     ];
     
-    const avkWordsUnit28 = [
+    const avkWords5thUnit28 = [
       { "word": "generous", "description": "They made a generous donation." },
       { "word": "message", "description": "She left a message for us." },
       { "word": "stranger", "description": "A stranger walked into the café." },
@@ -180,7 +180,7 @@
       { "word": "average", "description": "What is the average temperature?" }
     ];
 
-    const avkWordsUnit29 = CSVToJSON(`word,description
+    const avkWords5thUnit29 = CSVToJSON(`word,description
       vanity,Some movie stars display vanity.
       humanity,A doctor can help humanity.
       sickness,The baby's sickness lasted a week.
@@ -202,7 +202,7 @@
       swiftness,The cheetah is known for swiftness.
       tardiness,This note will explain my tardiness.`);
 
-    const avkWordsUnit31 = CSVToJSON(`word,description
+    const avkWords5thUnit31 = CSVToJSON(`word,description
       diamond,The diamond sparkled in the light.
       handsome,Morris is a handsome cat.
       truly,The class truly enjoys doing math.
@@ -224,7 +224,7 @@
       although,I'll help, although I'm not sure how.
       skiing,I've never been skiing.`)
 
-    const avkWordsUnit32 = CSVToJSON(`word,description
+    const avkWords5thUnit32 = CSVToJSON(`word,description
       childish,It is childish to stomp off like that.
       joyous,Singing can be a joyous experience.
       energetic,Pip is an active, energetic puppy.
@@ -246,7 +246,7 @@
       mysterious,A mysterious ship appeared at night.
       selfish,They were selfish not to offer help.`);
 
-    const avkWordsUnit33 = CSVToJSON(`word,description
+    const avkWords5thUnit33 = CSVToJSON(`word,description
       delight,The children shouted with delight.
       exit,Watch for the exit sign, please.
       public,We swim at the public pool.
@@ -268,7 +268,7 @@
       entrance,This entrance has double doors.
       slender,A slender gazelle nibbled grass.`);
 
-    const avkWordsUnit34 = CSVToJSON(`word,description
+    const avkWords5thUnit34 = CSVToJSON(`word,description
       import,They import olives from Italy.
       telephoto,My camera has a telephoto lens.
       eject,Will the ref eject the player?
@@ -290,7 +290,7 @@
       photograph,What a great photograph of you!
       respect,We need to respect each other.`);
 
-    const avkWordsUnit35 = CSVToJSON(`word,description
+    const avkWords5thUnit35 = CSVToJSON(`word,description
       patriotism,We fly the flag to show patriotism.
       zoology,Study zoology if you love animals.
       independence,I value my independence.
@@ -422,6 +422,13 @@
       accuse, Do not accuse me of laziness.
       result, The contest result was announced.`);
 
+    const avkWords6thUnit6 = 
+     avkWords6thUnit1
+     .concat(avkWords6thUnit2)
+     .concat(avkWords6thUnit3)
+     .concat(avkWords6thUnit4)
+     .concat(avkWords6thUnit5);
+
     const vvkwWordsBefore = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ];
 
     const vvkWordsFri20230421 = [ "sky", "find", "night", "high", "fly", "try", "light", "dry", "right", "mind", "eye", "buy" ];
@@ -529,7 +536,7 @@
       note, Please take a note for our conversation.
       life, I love my life!`);
 
-const vvkWordsFri20231006 = CSVToJSON(`word,description
+    const vvkWordsFri20231006 = CSVToJSON(`word,description
       paint, Give me the bucket of paint.
       clay, We use clay to make pottery.
       feel, I feel good about my test.
@@ -552,7 +559,7 @@ const vvkWordsFri20231006 = CSVToJSON(`word,description
 
     function words() {
       return selectedKid() == "avk" ? 
-        avkWords6thUnit5
+        avkWords6thUnit6
         // avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
         // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
         : 
