@@ -10,50 +10,6 @@
   td.number { text-align: center; }
 </style>
 <script>
-    async function getWords() {
-        const requestURL = 'words.json';
-        const request = new Request(requestURL);
-
-        const response = await fetch(request);
-        const words = await response.json();
-        return words;
-    }
-
-    function say(words) {
-      var msg = new SpeechSynthesisUtterance(words);
-      msg.rate = 0.6;
-      window.speechSynthesis.speak(msg);
-    }
-
-
-    function selectedKid() {
-      const kid = document.querySelector('input[name="kid"]:checked').value;
-      return kid;
-    }
-
-    function words() {
-      return selectedKid() == "avk" ? avkwords : vvkwords;
-    }
-
-    function sayWord(btn) {
-      event.cancelBubble = true;
-      let row = btn.parentNode.parentNode;
-      let word = row.querySelector("td.word").textContent;
-      say(word);
-
-      // let input = row.querySelector("input");
-      // input.focus();
-    }
-
-    function sayDescription(btn) {
-      let row = btn.parentNode.parentNode;
-      let key = parseInt(row.querySelector("td.key").textContent) - 1;
-      say(words()[key].description);
-
-      // let input = row.querySelector("input");
-      // input.focus();
-    }
-
     function keypress(obj) {
       if (event.key === "Enter") {
         // Cancel the default action, if needed
@@ -108,17 +64,6 @@
       });
     }
 
-    function toggleKid() {
-      // remove all the table content
-      const table = document.querySelector('tbody');
-      table.innerHTML = "";
-
-      // build the prompts again
-      setTimeout(() => {
-        buildPrompts();
-      }, "50");
-    }
-
     function another() {
       // remove all the table content
       const table = document.querySelector('tbody');
@@ -130,13 +75,42 @@
       }, "50");
     }
 
-function buildPrompts() {
-      const table = document.querySelector('tbody');
+function checkResult(obj) {
+  checkWord(obj);
+}
 
-      for(i = 0; i < 20; i++) {
-        const first = Math.floor(Math.random() * 11);
-        // const second = Math.floor(Math.random() * 11);
-        const second = first;
+function toggleNumber(obj) {
+  const val = obj.value;
+  if(val=="random")
+    buildRandomPrompts();
+  else
+    buildPrompts(parseInt(val));
+}
+
+function buildNumberSelect() {
+  const div = document.querySelector('#numberSelect');
+  for(i = 1; i <= 12; i++) {
+    let row = 
+`  <input type="radio" id="number${i}" name="numbers" value="${i}" onclick="toggleNumber(this)">
+  <label for="number${i}" onclick="toggleNumber(this)">${i}</label>`;
+    let obj = div.insertAdjacentHTML("beforeend",row);
+  }
+  const first = document.querySelector('#number1');
+  // first.checked = true;
+  
+  row = `  <input type="radio" id="numberRandom" name="numbers" value="random" onclick="toggleNumber(this)">
+  <label for="numberRandom" onclick="toggleNumber(this)">Random</label>`;
+    let obj = div.insertAdjacentHTML("beforeend",row);
+
+}
+
+function buildPrompts(num) {
+  const table = document.querySelector('tbody');
+  table.replaceChildren();
+
+  for(i = 0; i < 12; i++) {
+        const first = num;
+        const second = Math.floor(Math.random() * 13);
 
         let row = `<tr>
           <td class="number">${first}</td>
@@ -157,18 +131,45 @@ function buildPrompts() {
         const input = table.querySelector('input');
         input.focus();
       }, "300");
+}
+
+function buildRandomPrompts() {
+      const table = document.querySelector('tbody');
+      table.replaceChildren();
+
+      for(i = 0; i < 12; i++) {
+        const first = Math.floor(Math.random() * 13);
+        const second = Math.floor(Math.random() * 13);
+        // const second = first;
+
+        let row = `<tr>
+          <td class="number">${first}</td>
+          <td> * </td>
+          <td class="number">${second}</td>
+          <td> = </td>
+          <td class="result">${first * second}</td>
+          <td>
+            <input type="text" onkeypress="keypress(this)" autocomplete="off" autocorrect="off" autocapitalize="off" 
+            spellcheck="false" />
+          </td>
+          <td><button onClick="checkResult(this)">Check</button></td>
+          </tr>`;
+        let obj = table.insertAdjacentHTML("beforeend",row);
+      }
+      
     }
 
     window.onload = function() {
-      buildPrompts();
+      buildNumberSelect();
+      // buildPrompts();
+      // setTimeout(() => {
+      //   const input = table.querySelector('input');
+      //   input.focus();
+      // }, "300");
     }
     
 </script>
-<div style="display: none;">
-  <input type="radio" id="avk" name="kid" value="avk" onclick="toggleKid(this)" checked>
-  <label for="avk" onclick="toggleKid(this)">AvK</label>
-  <input type="radio" id="vvk" name="kid" value="vvk" onclick="toggleKid(this)" onclick="toggleKid(this)">
-  <label for="vvk">VvK</label><br>
+<div id="numberSelect">
 </div>
 <div id="prompts">
   <table><tbody></tbody></table>
@@ -176,7 +177,5 @@ function buildPrompts() {
   <div><button onclick="tryAgain()">Retry</button></div>
   <div><button onclick="another()">New</button></div>
   
-  <!-- <div><button onclick="say('Hello World')">Say Hello World</button></div>
-  <div><button onclick="getWords()">Get Words</button></div> -->
   </body>
 </html>
