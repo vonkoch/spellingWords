@@ -423,11 +423,33 @@
       result, The contest result was announced.`);
 
     const avkWords6thUnit6 = 
-     avkWords6thUnit1
-     .concat(avkWords6thUnit2)
-     .concat(avkWords6thUnit3)
-     .concat(avkWords6thUnit4)
-     .concat(avkWords6thUnit5);
+      avkWords6thUnit1
+      .concat(avkWords6thUnit2)
+      .concat(avkWords6thUnit3)
+      .concat(avkWords6thUnit4)
+      .concat(avkWords6thUnit5);
+
+    const avkWords6thUnit7 = CSVToJSON(`word,description
+      aptitude, He has an aptitude for languages.
+      understood, I understood the reason for the rule.
+      intrude, We should not intrude on a meeting.
+      routine, The car is here for a routine checkup.
+      proof, We have proof that Pluto exists.
+      neighborhood, I just moved to this neighborhood.
+      would've, I would've helped you make dinner.
+      cushion, The cushion is comfortable.
+      fluid, Your car is low on engine fluid.
+      Tablespoon, Add a tablespoon of flour.
+      could've, I could've helped you clean up.
+      should've, You should've attended the meeting.
+      through, Walk through the door on the left.
+      goodness, His goodness is known to everyone.
+      approve, Do you approve of the new rules?
+      bulletin, A bulletin warned us to stay inside.
+      conclude, I will conclude my speech with a joke.
+      introduce, I want to introduce you to my family.
+      Teaspoon, Add a teaspoon of salt to the mix.
+      assume, I assume you brought your umbrella.`);
 
     const vvkwWordsBefore = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ];
 
@@ -559,7 +581,7 @@
 
     function words() {
       return selectedKid() == "avk" ? 
-        avkWords6thUnit6
+        avkWords6thUnit7
         // avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
         // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
         : 
