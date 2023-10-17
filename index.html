@@ -451,6 +451,28 @@
       Teaspoon, Add a teaspoon of salt to the mix.
       assume, I assume you brought your umbrella.`);
 
+    const avkWords6thUnit8 = CSVToJSON(`word,description
+      mischief, A puppy often gets into mischief.
+      ceiling, Paint was peeling from the ceiling.
+      siege, The town was under siege for two months.
+      relief, It was a relief to have the test over.
+      reign, The queen's reign lasted for fifty years.
+      niece, His niece is in sixth grade.
+      leisure, How do you spend your leisure time?
+      achieve, We hope to achieve our goal.
+      yield, The driver slowed down at the yield sign.
+      weird, I thought the movie had a weird ending.
+      conceit, Their conceit made them less likeable.
+      grief, There's no need to hide your grief.
+      shriek, We heard a shriek of laughter.
+      fierce, The fierce wind blew the door open.
+      seize, At the signal seize the ball and run.
+      thief, The police caught the thief in the act.
+      receive, You will receive the letter in the mail.
+      sleigh, The horse pulled the sleigh down the path.
+      receipt, The sales clerk handed her the receipt.
+      shield, The hat will shield you from the rain.`);
+
     const vvkwWordsBefore = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ];
 
     const vvkWordsFri20230421 = [ "sky", "find", "night", "high", "fly", "try", "light", "dry", "right", "mind", "eye", "buy" ];
@@ -581,7 +603,7 @@
 
     function words() {
       return selectedKid() == "avk" ? 
-        avkWords6thUnit7
+        avkWords6thUnit8
         // avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
         // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
         : 
