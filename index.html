@@ -596,6 +596,22 @@
       needle, Can you give me the needle to pump up the ball.
       crayon, I love coloring with crayons`);
 
+    const vvkWordsFri20231020 = CSVToJSON(`word,description
+      coach, My coach is Luis.
+      blow, I blow dry my hair.
+      float, My water bottle floats in the water.
+      hold, Can you hold the door for me?
+      sew, I will sew my whole in my pants.
+      though, I received full point even though I was late.
+      sold, I sold my car.
+      soap, I wash my hands with soap.
+      row, I lined up the ducks in a row.
+      own, I own this car.
+      both, I love you both.
+      most, Who scored the most goals?
+      tomorrow, What will you do tomorrow?
+      program, We received a program at the concert.`);
+
     function selectedKid() {
       const kid = document.querySelector('input[name="kid"]:checked').value;
       return kid;
@@ -607,7 +623,7 @@
         // avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
         // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
         : 
-        vvkWordsFri20231006
+        vvkWordsFri20231020
         ;
     }
 
