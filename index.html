@@ -473,6 +473,28 @@
       receipt, The sales clerk handed her the receipt.
       shield, The hat will shield you from the rain.`);
 
+      const avkWords6thUnit9 = CSVToJSON(`word,description
+        carpenter, The carpenter repaired the door frame.
+        adore, I know that they adore seafood.
+        therefore, It is raining; therefore, the game is off.
+        dirty,Please leave your dirty shoes at the door.
+        purchase,We made a ten-dollar purchase.
+        carbon,Charcoal has carbon in it.
+        authority, He is an authority on birds.
+        confirm, Call the airline to confirm your flight.
+        territory, This territory is used for agriculture.
+        curfew, The teenagers have a ten o'clock curfew.
+        carton, The carton broke, and the books fell out.
+        ignore, Please don't ignore our concerns.
+        furnace, Check the furnace before winter arrives.
+        concern, My main concern is for your safety.
+        foreman, The foreman asked us to work overtime.
+        partner, He is my partner in science class.
+        mortar, A mason puts mortar between bricks.
+        curtain, The curtain is made of heavy fabric.
+        insert, First insert the ticket in the slot.
+        circular, The house has a wide circular staircase.`);
+
     const vvkwWordsBefore = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ];
 
     const vvkWordsFri20230421 = [ "sky", "find", "night", "high", "fly", "try", "light", "dry", "right", "mind", "eye", "buy" ];
@@ -619,7 +641,7 @@
 
     function words() {
       return selectedKid() == "avk" ? 
-        avkWords6thUnit8
+        avkWords6thUnit9
         // avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
         // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
         : 
