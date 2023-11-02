@@ -650,6 +650,22 @@
       strength, I have a lot of strength.
       kitchen, We cook in the kitchen.`);
 
+    const vvkWordsFri20231103 = CSVToJSON(`word,description
+      wild, You are a wild child.
+      bright, Your brain is very bright.
+      die, I hope the battery doesn't die on us.
+      sight, I won't leave you out of my sight.
+      child, You are might child.
+      pie, Will you eat some pie?
+      fight, Please don't fight!
+      lie, Please don't lie to me.
+      tight, This shoe is too tight.
+      tie, Can you help me tie my shoes?
+      might, I might come over later today.
+      mind, You have a beautiful mind.
+      design, I love the design of your house.
+      delight, You are such a delight to work with!`);
+
     function selectedKid() {
       const kid = document.querySelector('input[name="kid"]:checked').value;
       return kid;
@@ -661,7 +677,7 @@
         // avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
         // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
         : 
-        vvkWordsFri20231027
+        vvkWordsFri20231103
         ;
     }
 
