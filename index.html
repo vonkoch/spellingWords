@@ -495,6 +495,28 @@
       insert, First insert the ticket in the slot.
       circular, The house has a wide circular staircase.`);
 
+    const avkWords6thUnit10 = CSVToJSON(`word,description
+      unpleasant, Washing a pan is an unpleasant task.
+      absent, She was absent from school today.
+      practical, It was a practical solution.
+      neutral, You can take sides, but I am neutral.
+      Turbulent, The ocean was turbulent from a storm.
+      rival, We will play our rival in today's game.
+      rational, We had a rational explanation.
+      instant, I saw the rainbow for only an instant.
+      Talent, She is known for her musical talent.
+      partial, It was only a partial answer.
+      label, The label says the tie is made of silk.
+      legal, A lawyer can give legal advice.
+      cruel, It is cruel to leave the dog alone.
+      distant, We hope to travel to distant planets.
+      Tunnel, The truck stalled in the tunnel.
+      typical, Her typical day begins with a jog.
+      channel, The boat sailed through the channel.
+      ignorant, They were ignorant of the game rules.
+      central, I live in the central part of the state.
+      material, The new material was delivered`);
+
     const vvkwWordsBefore = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ];
 
     const vvkWordsFri20230421 = [ "sky", "find", "night", "high", "fly", "try", "light", "dry", "right", "mind", "eye", "buy" ];
@@ -673,7 +695,7 @@
 
     function words() {
       return selectedKid() == "avk" ? 
-        avkWords6thUnit9
+        avkWords6thUnit10
         // avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
         // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
         : 
