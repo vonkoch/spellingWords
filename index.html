@@ -517,6 +517,28 @@
       central, I live in the central part of the state.
       material, The new material was delivered`);
 
+    const avkWords6thUnit11 = CSVToJSON(`word,description
+      completely, The food is completely gone.
+      additionally, He is additionally a skilled artist.
+      downward, This downward path leads to a pond.
+      homeward, Seeing the storm, we headed homeward.
+      especially, He is especially fond of spaghetti.
+      certainly, I am certainly happy that you are home.
+      eastward, The storm is moving eastward.
+      carefully, Please open the package carefully.
+      skyward, We looked skyward to see the plane.
+      outward, Fire laws say doors must open outward.
+      scarcely, I have scarcely finished my breakfast.
+      inward, These windows open inward.
+      ideally, This is ideally the best place to meet.
+      upward, The wind carried the balloons upward.
+      possibly, She is possibly the best soccer player.
+      finally, They finally arrived at midnight.
+      barely, I have barely started my homework.
+      loosely, Place the flowers loosely in the vase.
+      afterward, I will answer your question afterward.
+      directly, You should go directly to the bus.`);
+    
     const vvkwWordsBefore = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ];
 
     const vvkWordsFri20230421 = [ "sky", "find", "night", "high", "fly", "try", "light", "dry", "right", "mind", "eye", "buy" ];
@@ -695,7 +717,7 @@
 
     function words() {
       return selectedKid() == "avk" ? 
-        avkWords6thUnit10
+        avkWords6thUnit11
         // avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
         // {...avkWordsUnit25,...avkWordsUnit26,...avkWordsUnit27,...avkWordsUnit28,...avkWordsUnit29} 
         : 
