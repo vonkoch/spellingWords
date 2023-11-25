@@ -9,21 +9,6 @@
   td.word { visibility: hidden; text-align: right; text-transform: capitalize; }
 </style>
 <script>
-    // async function getWords() {
-    //     const requestURL = 'words.json';
-    //     const request = new Request(requestURL);
-
-    //     const response = await fetch(request);
-    //     const words = await response.json();
-    //     return words;
-    // }
-
-    function say(words) {
-      var msg = new SpeechSynthesisUtterance(words);
-      msg.rate = 0.8;
-      window.speechSynthesis.speak(msg);
-    }
-
     const CSVToJSON = (data, delimiter = ',') => {
         const titles = data.slice(0, data.indexOf('\n')).split(delimiter);
         return data
@@ -38,7 +23,7 @@
             });
         };
 
-    const avkWordsChosen20230421 = CSVToJSON(`word,description
+    var avkWords5thChosen20230421 = CSVToJSON(`word,description
       director,The play has a great director.
       pitcher,The pitcher threw a fastball.
       scientist,The scientist studied sea life.
@@ -90,7 +75,7 @@
       specialty,Cherry pie is their specialty.
       arrangement,The flower arrangement goes here.`);
 
-    const avkWords5thUnit25 = CSVToJSON(`word,description
+    var avkWords5thUnit25 = CSVToJSON(`word,description
       director,The play has a great director.
       pitcher,The pitcher threw a fastball.
       commander,They saluted their commander.
@@ -112,7 +97,7 @@
       publisher,A publisher makes and sells books.
       gardener,That gardener is fond of roses.`);
 
-    const avkWords5thUnit26 = CSVToJSON(`word,description
+    var avkWords5thUnit26 = CSVToJSON(`word,description
       soldiers,Many soldiers defended the country.
       pianos,These pianos need to be tuned.
       essays,Sam enjoys essays about nature.
@@ -134,7 +119,7 @@
       heroes,Legends usually have brave heroes.
       diaries,One day I may publish my diaries.`);
 
-    const avkWords5thUnit27 = [
+    var avkWords5thUnit27 = [
       { "word": "bimonthly", "description": "I write a bimonthly bulletin." },
       { "word": "midday", "description": "By midday the bud had opened." },
       { "word": "semicircle", "description": "We sat in a semicircle." },
@@ -157,7 +142,7 @@
       { "word": "semiformal", "description": "It was a semiformal event." }
     ];
     
-    const avkWords5thUnit28 = [
+    var avkWords5thUnit28 = [
       { "word": "generous", "description": "They made a generous donation." },
       { "word": "message", "description": "She left a message for us." },
       { "word": "stranger", "description": "A stranger walked into the café." },
@@ -180,7 +165,7 @@
       { "word": "average", "description": "What is the average temperature?" }
     ];
 
-    const avkWords5thUnit29 = CSVToJSON(`word,description
+    var avkWords5thUnit29 = CSVToJSON(`word,description
       vanity,Some movie stars display vanity.
       humanity,A doctor can help humanity.
       sickness,The baby's sickness lasted a week.
@@ -202,7 +187,7 @@
       swiftness,The cheetah is known for swiftness.
       tardiness,This note will explain my tardiness.`);
 
-    const avkWords5thUnit31 = CSVToJSON(`word,description
+    var avkWords5thUnit31 = CSVToJSON(`word,description
       diamond,The diamond sparkled in the light.
       handsome,Morris is a handsome cat.
       truly,The class truly enjoys doing math.
@@ -224,7 +209,7 @@
       although,I'll help, although I'm not sure how.
       skiing,I've never been skiing.`)
 
-    const avkWords5thUnit32 = CSVToJSON(`word,description
+    var avkWords5thUnit32 = CSVToJSON(`word,description
       childish,It is childish to stomp off like that.
       joyous,Singing can be a joyous experience.
       energetic,Pip is an active, energetic puppy.
@@ -246,7 +231,7 @@
       mysterious,A mysterious ship appeared at night.
       selfish,They were selfish not to offer help.`);
 
-    const avkWords5thUnit33 = CSVToJSON(`word,description
+    var avkWords5thUnit33 = CSVToJSON(`word,description
       delight,The children shouted with delight.
       exit,Watch for the exit sign, please.
       public,We swim at the public pool.
@@ -268,7 +253,7 @@
       entrance,This entrance has double doors.
       slender,A slender gazelle nibbled grass.`);
 
-    const avkWords5thUnit34 = CSVToJSON(`word,description
+    var avkWords5thUnit34 = CSVToJSON(`word,description
       import,They import olives from Italy.
       telephoto,My camera has a telephoto lens.
       eject,Will the ref eject the player?
@@ -290,7 +275,7 @@
       photograph,What a great photograph of you!
       respect,We need to respect each other.`);
 
-    const avkWords5thUnit35 = CSVToJSON(`word,description
+    var avkWords5thUnit35 = CSVToJSON(`word,description
       patriotism,We fly the flag to show patriotism.
       zoology,Study zoology if you love animals.
       independence,I value my independence.
@@ -312,7 +297,7 @@
       attendance,The teacher took attendance.
       biology,I would like to study biology.`);
 
-    const avkWords6thUnit1 = CSVToJSON(`word,description
+    var avkWords6thUnit01 = CSVToJSON(`word,description
       pattern, The leaves formed a colorful pattern.
       album, He arranged his pictures in an album.
       labor, Scrubbing the floor was difficult labor.
@@ -334,7 +319,7 @@
       favorite, They played my favorite song.
       behave, I am trying to teach my dog to behave.`);
 
-    const avkWords6thUnit2 = CSVToJSON(`word,description
+    var avkWords6thUnit02 = CSVToJSON(`word,description
       text, We revised the speechwriter's text.
       feeble, Grandpa is feeble but has a sharp mind.
       gravity, The pull of gravity gives us weight.
@@ -356,7 +341,7 @@
       release, I will release the name of the winner.
       meadow, Plant life abounds in the meadow.`);
 
-    const avkWords6thUnit3 = CSVToJSON(`word,description
+    var avkWords6thUnit03 = CSVToJSON(`word,description
       attic, I found the old clothes in the attic.
       ideal, The weather is ideal for sailing.
       limit, The speed limit is forty miles an hour.
@@ -378,7 +363,7 @@
       inherit, The baby might inherit your blue eyes.
       examine, The detective will examine the evidence.`);
 
-    const avkWords6thUnit4 = CSVToJSON(`word,description
+    var avkWords6thUnit04 = CSVToJSON(`word,description
       profit, The store made a profit from the sale.
       oppose, The mayor will oppose the new highway.
       bronze, The lamp base is made of solid bronze.
@@ -400,7 +385,7 @@
       project, The class project is nearly done.
       respond, They did not respond to my phone call.`);
 
-    const avkWords6thUnit5 = CSVToJSON(`word,description
+    var avkWords6thUnit05 = CSVToJSON(`word,description
       stubborn, The stubborn cat will not move.
       computer, Our files are on the computer.
       customer, The customer waited in line.
@@ -422,14 +407,14 @@
       accuse, Do not accuse me of laziness.
       result, The contest result was announced.`);
 
-    const avkWords6thUnit6 = 
-      avkWords6thUnit1
-      .concat(avkWords6thUnit2)
-      .concat(avkWords6thUnit3)
-      .concat(avkWords6thUnit4)
-      .concat(avkWords6thUnit5);
+    var avkWords6thUnit06 = 
+      avkWords6thUnit01
+      .concat(avkWords6thUnit02)
+      .concat(avkWords6thUnit03)
+      .concat(avkWords6thUnit04)
+      .concat(avkWords6thUnit05);
 
-    const avkWords6thUnit7 = CSVToJSON(`word,description
+    var avkWords6thUnit07 = CSVToJSON(`word,description
       aptitude, He has an aptitude for languages.
       understood, I understood the reason for the rule.
       intrude, We should not intrude on a meeting.
@@ -451,7 +436,7 @@
       Teaspoon, Add a teaspoon of salt to the mix.
       assume, I assume you brought your umbrella.`);
 
-    const avkWords6thUnit8 = CSVToJSON(`word,description
+    var avkWords6thUnit08 = CSVToJSON(`word,description
       mischief, A puppy often gets into mischief.
       ceiling, Paint was peeling from the ceiling.
       siege, The town was under siege for two months.
@@ -473,7 +458,7 @@
       receipt, The sales clerk handed her the receipt.
       shield, The hat will shield you from the rain.`);
 
-    const avkWords6thUnit9 = CSVToJSON(`word,description
+    var avkWords6thUnit09 = CSVToJSON(`word,description
       carpenter, The carpenter repaired the door frame.
       adore, I know that they adore seafood.
       therefore, It is raining; therefore, the game is off.
@@ -495,7 +480,7 @@
       insert, First insert the ticket in the slot.
       circular, The house has a wide circular staircase.`);
 
-    const avkWords6thUnit10 = CSVToJSON(`word,description
+    var avkWords6thUnit10 = CSVToJSON(`word,description
       unpleasant, Washing a pan is an unpleasant task.
       absent, She was absent from school today.
       practical, It was a practical solution.
@@ -517,35 +502,35 @@
       central, I live in the central part of the state.
       material, The new material was delivered`);
 
-    const avkWords6thUnit11 = CSVToJSON(`word,description
-      completely, The food is completely gone.
-      additionally, He is additionally a skilled artist.
-      downward, This downward path leads to a pond.
-      homeward, Seeing the storm, we headed homeward.
-      especially, He is especially fond of spaghetti.
-      certainly, I am certainly happy that you are home.
-      eastward, The storm is moving eastward.
-      carefully, Please open the package carefully.
-      skyward, We looked skyward to see the plane.
-      outward, Fire laws say doors must open outward.
-      scarcely, I have scarcely finished my breakfast.
-      inward, These windows open inward.
-      ideally, This is ideally the best place to meet.
-      upward, The wind carried the balloons upward.
-      possibly, She is possibly the best soccer player.
-      finally, They finally arrived at midnight.
-      barely, I have barely started my homework.
-      loosely, Place the flowers loosely in the vase.
-      afterward, I will answer your question afterward.
-      directly, You should go directly to the bus.`);
+    var avkWords6thUnit11 = CSVToJSON(`word|description
+      completely| The food is completely gone.
+      additionally| He is additionally a skilled artist.
+      downward| This downward path leads to a pond.
+      homeward| Seeing the storm, we headed homeward.
+      especially| He is especially fond of spaghetti.
+      certainly| I am certainly happy that you are home.
+      eastward| The storm is moving eastward.
+      carefully| Please open the package carefully.
+      skyward| We looked skyward to see the plane.
+      outward| Fire laws say: Doors must open outward.
+      scarcely| I have scarcely finished my breakfast.
+      inward| These windows open inward.
+      ideally| This is ideally the best place to meet.
+      upward| The wind carried the balloons upward.
+      possibly| She is possibly the best soccer player.
+      finally| They finally arrived at midnight.
+      barely| I have barely started my homework.
+      loosely| Place the flowers loosely in the vase.
+      afterward| I will answer your question afterward.
+      directly| You should go directly to the bus.`,"|");
     
-    const vvkwWordsBefore = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ];
+    var vvkWordsFri20230421Before = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ];
 
-    const vvkWordsFri20230421 = [ "sky", "find", "night", "high", "fly", "try", "light", "dry", "right", "mind", "eye", "buy" ];
+    var vvkWordsFri20230421 = [ "sky", "find", "night", "high", "fly", "try", "light", "dry", "right", "mind", "eye", "buy" ];
 
-    const vvkWordsFri20230428 = [ "liked", "hoping", "baked", "using", "chased", "making", "closed", "hiding", "named", "riding" ];
+    var vvkWordsFri20230428 = [ "liked", "hoping", "baked", "using", "chased", "making", "closed", "hiding", "named", "riding" ];
 
-    const vvkWordsFri20230505 = CSVToJSON(`word,description
+    var vvkWordsFri20230505 = CSVToJSON(`word,description
       named,I named my frenchy English
       high,How high can you jump?
       zoo,I saw animals at the zoo
@@ -567,9 +552,9 @@
       chased,I chased my brother up the stairs
       fly,I fly to europe if I can`);
 
-    const vvkWordsFri20230901x = [ "mix", "milk", "smell", "last", "head", "friend", "class", "left", "thick", "send", "thin", "stick", "empty", "glance"];
+    var vvkWordsFri20230901x = [ "mix", "milk", "smell", "last", "head", "friend", "class", "left", "thick", "send", "thin", "stick", "empty", "glance"];
 
-    const vvkWordsFri20230901 = CSVToJSON(`word,description
+    var vvkWordsFri20230901 = CSVToJSON(`word,description
       mix, Let's mix the ingredients.
       milk, I drink milk every morning.
       smell, The rotten egg smells real bad.
@@ -585,7 +570,7 @@
       empty, This glass is empty.
       glance, I took a quick glance at the text.`);
 
-    const vvkWordsFri20230908 = CSVToJSON(`word,description
+    var vvkWordsFri20230908 = CSVToJSON(`word,description
       have, I have one dollar.
       haven't, I haven't a clue what I am doing.
       found, I found my phone.
@@ -603,7 +588,7 @@
       everybody, I love everybody.
       guess, I guess who won.`);
 
-    const vvkWordsFri20230915 = CSVToJSON(`word,description
+    var vvkWordsFri20230915 = CSVToJSON(`word,description
       pond, the ducks swim in the pond.
       luck, you bring me good luck.
       drop, don't drop the cake.
@@ -619,7 +604,7 @@
       dodge, I will dodge the question.
       dusk, I will play from dawn to dusk.`);
 
-    const vvkWordsFri20230929 = CSVToJSON(`word,description
+    var vvkWordsFri20230929 = CSVToJSON(`word,description
       last, That's the last word.
       mix, Let mix the baking power.
       stick, Victoria likes the stick.
@@ -646,7 +631,7 @@
       note, Please take a note for our conversation.
       life, I love my life!`);
 
-    const vvkWordsFri20231006 = CSVToJSON(`word,description
+    var vvkWordsFri20231006 = CSVToJSON(`word,description
       paint, Give me the bucket of paint.
       clay, We use clay to make pottery.
       feel, I feel good about my test.
@@ -662,7 +647,7 @@
       needle, Can you give me the needle to pump up the ball.
       crayon, I love coloring with crayons`);
 
-    const vvkWordsFri20231020 = CSVToJSON(`word,description
+    var vvkWordsFri20231020 = CSVToJSON(`word,description
       coach, My coach is Luis.
       blow, I blow dry my hair.
       float, My water bottle floats in the water.
@@ -678,7 +663,7 @@
       tomorrow, What will you do tomorrow?
       program, We received a program at the concert.`);
 
-    const vvkWordsFri20231027 = CSVToJSON(`word,description
+    var vvkWordsFri20231027 = CSVToJSON(`word,description
       spring, I love the  fresh flower smell in the spring.
       knee, I hurt my knee playing fussball.
       throw, Please throw me the ball.
@@ -694,7 +679,7 @@
       strength, I have a lot of strength.
       kitchen, We cook in the kitchen.`);
 
-    const vvkWordsFri20231103 = CSVToJSON(`word,description
+    var vvkWordsFri20231103 = CSVToJSON(`word,description
       wild, You are a wild child.
       bright, Your brain is very bright.
       die, I hope the battery doesn't die on us.
@@ -716,6 +701,10 @@
     }
 
     function words() {
+      const e = document.getElementById("wordsSelect");
+      const wordsName = e.options[e.selectedIndex].getAttribute("data-name");
+      const words = window[wordsName];
+      return words;
       return selectedKid() == "avk" ? 
         avkWords6thUnit11
         // avkWordsUnit25.concat(avkWordsUnit26,avkWordsUnit27,avkWordsUnit28,avkWordsUnit29)
@@ -730,9 +719,18 @@
       let row = btn.parentNode.parentNode;
       let word = row.querySelector("td.word").textContent;
       say(word);
+    }
 
-      // let input = row.querySelector("input");
-      // input.focus();
+    function say(words) {
+      speechSynthesis.cancel();
+      const msg = new SpeechSynthesisUtterance(words);
+      // msg.rate = 0.8;
+      // msg.pitch = 1.5;
+      const e = document.getElementById("voiceSelect");
+      const voiceIndex = e.options[e.selectedIndex].getAttribute("data-voiceIndex");
+      msg.voice = speechSynthesis.getVoices()[voiceIndex];
+
+      speechSynthesis.speak(msg);
     }
 
     function sayDescription(btn) {
@@ -813,7 +811,8 @@
 
       // build the prompts again
       setTimeout(() => {
-        buildPrompts();
+        populateWordsList(); // first build the list of available words
+        buildPrompts(); // then use the latest one to build the prompts
       }, "300");
     }
 
@@ -844,8 +843,51 @@
       }, "300");
     }
 
+    function populateVoiceList() {
+      if (typeof speechSynthesis === "undefined") {
+        alert ("window.speechSynthesis not supported");
+        return;
+      }
+
+      const voices = speechSynthesis.getVoices();
+
+      for (let i = 0; i < voices.length; i++) {
+        if (voices[i].lang === "en-US") {
+          const option = document.createElement("option");
+          option.textContent = `${voices[i].name} (${voices[i].lang})`;
+          option.setAttribute("data-lang", voices[i].lang);
+          option.setAttribute("data-name", voices[i].name);
+          option.setAttribute("data-voiceIndex",i);
+          if (voices[i].name === "Samantha")
+            option.setAttribute("selected", null);
+          document.getElementById("voiceSelect").appendChild(option);
+        }
+      }
+    }
+
+    function populateWordsList() {
+      const kid = selectedKid();
+      const wordVariableNames = Object.keys(window).filter(x => typeof(window[x]) !== 'function' && x.includes(kid));
+      wordVariableNames.sort().reverse();
+
+      const wordsSelect = document.getElementById("wordsSelect");
+      wordsSelect.innerHTML = null;
+      for (let i = 0; i < wordVariableNames.length; i++) {
+        const option = document.createElement("option");
+        option.textContent = wordVariableNames[i];
+        option.setAttribute("data-name", wordVariableNames[i]);
+        wordsSelect.append(option);
+      }
+
+      wordsSelect.addEventListener("change", () => {
+        buildPrompts();
+      });
+    }
+
     window.onload = function() {
+      populateWordsList();
       buildPrompts();
+      populateVoiceList();
     }
 </script>
 <body>
@@ -853,7 +895,10 @@
     <input type="radio" id="avk" name="kid" value="avk" onclick="toggleKid(this)" checked>
     <label for="avk" onclick="toggleKid(this)">AvK</label>
     <input type="radio" id="vvk" name="kid" value="vvk" onclick="toggleKid(this)" onclick="toggleKid(this)">
-    <label for="vvk">VvK</label><br>
+    <label for="vvk">VvK</label>
+    <select id="voiceSelect"></select>
+    <select id="wordsSelect"></select>
+    <br>
   </div>
   <div id="prompts">
     <table><tbody></tbody></table>
