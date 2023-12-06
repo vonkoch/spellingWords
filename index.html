@@ -500,7 +500,7 @@
       channel, The boat sailed through the channel.
       ignorant, They were ignorant of the game rules.
       central, I live in the central part of the state.
-      material, The new material was delivered`);
+      material, The new material was delivered`,"|");
 
     var avkWords6thUnit11 = CSVToJSON(`word|description
       completely| The food is completely gone.
@@ -522,8 +522,34 @@
       barely| I have barely started my homework.
       loosely| Place the flowers loosely in the vase.
       afterward| I will answer your question afterward.
-      directly| You should go directly to the bus.`,"|");
+      directly| You should go directly to the bus.`);
+
+    var avkWords6thUnit12 = CSVToJSON(`word|description
+        foo | bar
+    `,"|");
     
+    var avkWords6thUnit13 = CSVToJSON(`word|description
+    fashion | Long skirts were in fashion then.
+    difficult | Cleaning up after a storm is difficult.
+    physician | She is a physician at the clinic.
+    former | The mayor is a former basketball star.
+    sophomore | Max is a sophomore in high school.
+    triumph | The win was a triumph for our team.
+    orphan | The orphan was taken in by a family.
+    effort | Running several miles requires effort.
+    phrase | I am fond of the phrase "Less is more."
+    faint | He was feeling faint after the race.
+    traffic | She listened to the traffic report.
+    photo | This is the best photo from our trip.
+    golf | They played on a public golf course.
+    fulfill | You can fulfill all of your dreams.
+    phone | We talked on the phone for an hour.
+    officer | The officer on duty inquired about us.
+    baffle | The story seems to baffle everyone.
+    suffix | A suffix is added to the end of a word.
+    shelf | We keep the blender on the top shelf.
+    offer | I had to turn down her generous offer.`,"|");
+
     var vvkWordsFri20230421Before = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ];
 
     var vvkWordsFri20230421 = [ "sky", "find", "night", "high", "fly", "try", "light", "dry", "right", "mind", "eye", "buy" ];
@@ -694,6 +720,18 @@
       mind, You have a beautiful mind.
       design, I love the design of your house.
       delight, You are such a delight to work with!`);
+
+    var vvkWordsFri20231110 = CSVToJSON(`word,description
+    `);
+
+    var vvkWordsFri20231117 = CSVToJSON(`word,description
+    `);
+
+    var vvkWordsFri20231201 = CSVToJSON(`word,description
+    `);
+
+    var vvkWordsFri20231208 = CSVToJSON(`word,description
+    `);
 
     function selectedKid() {
       const kid = document.querySelector('input[name="kid"]:checked').value;
