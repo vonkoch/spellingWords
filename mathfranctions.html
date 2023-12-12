@@ -6,7 +6,7 @@
   html, button, input { font-size: 16px; }
   input.false { color: red; }
   input.correct { background-color: green; color: white; }
-  td.result { visibility: hidden; }
+  td.result { visibility: hidden; text-align: center; }
   td.number { text-align: center; }
 </style>
 <script>
@@ -19,7 +19,7 @@
     }
 
     function equal(word1, word2) {
-      const w1 = word1.replace(/\s+/g, '');
+      const w1 = word1.replace(/\s+/g, '').replace(/hr/g, '-');
       const w2 = word2.replace(/\s+/g, '');
       return (w1 === w2);
     }
@@ -27,7 +27,7 @@
     function checkWord(obj) {
       const row = obj.parentNode.parentNode;
       const td = row.querySelector("td.result");
-      const answer = td.textContent;
+      const answer = td.getAttribute("data");
       const input = row.querySelector("input");
       const guess = input.value;
 
@@ -150,7 +150,7 @@ function buildRandomPrompts() {
           <td> = </td>
           <td class="number">${num2} <hr> ${denom2}</td>
           <td>&nbsp;&nbsp;&nbsp;</td>
-          <td class="result">  ${num2 - denom2/denom1*num1} / ${denom2}</td>
+          <td class="result" data="${num2 - denom2/denom1*num1}/${denom2}">${num2 - denom2/denom1*num1} <hr> ${denom2}</td>
           <td>
             A = 
             <input type="text" onkeypress="keypress(this)" autocomplete="off" autocorrect="off" autocapitalize="off" 
