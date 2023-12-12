@@ -797,9 +797,9 @@
     }
 
     function wordsEqual(word1, word2) {
-      const w1 = word1.trim().toLowerCase();
-      const w2 = word2.trim().toLowerCase();
-      return ( w1 === w2);
+      const w1 = word1.replace(/\s+/g, '').toLowerCase();
+      const w2 = word2.replace(/\s+/g, '').toLowerCase();
+      return ( w1 === w2 );
     }
 
     function checkWord(obj) {
@@ -944,6 +944,7 @@
   
   <div><button onclick="tryAgain()"> Try Again </button></div>
   <div><a href="math.html">Multiplication</a></div>
+  <div><a href="mathfranctions.html">Fractions</a></div>
   <div><a href="map.html">Map</a></div>
 </body>
 </html>

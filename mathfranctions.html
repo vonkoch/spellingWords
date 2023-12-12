@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<body>
+<style>
+  html { font-family: sans-serif; }
+  html, button, input { font-size: 16px; }
+  input.false { color: red; }
+  input.correct { background-color: green; color: white; }
+  td.result { visibility: hidden; }
+  td.number { text-align: center; }
+</style>
+<script>
+    function keypress(obj) {
+      if (event.key === "Enter") {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        checkWord(obj);
+      }
+    }
+
+    function equal(word1, word2) {
+      const w1 = word1.replace(/\s+/g, '');
+      const w2 = word2.replace(/\s+/g, '');
+      return (w1 === w2);
+    }
+
+    function checkWord(obj) {
+      const row = obj.parentNode.parentNode;
+      const td = row.querySelector("td.result");
+      const answer = td.textContent;
+      const input = row.querySelector("input");
+      const guess = input.value;
+
+      if(guess !== "") {
+        input.className = equal(answer,guess) ? "correct" : "false";
+        td.style.visibility = "visible";
+
+        row.querySelectorAll('button, input').forEach(elem => {
+          elem.disabled = true;
+        });
+
+        // set focus to next input
+        // document.dispatchEvent(new KeyboardEvent('keydown', {'key': 'tab'}));
+        const nextrow = row.nextSibling;
+        if(nextrow) {
+          const nextinput = nextrow.querySelector("input");
+          nextinput.focus();
+        }
+      } else {
+        input.focus();
+      }
+    }
+
+    function tryAgain() {
+      // re-enable all inputs
+      const table = document.querySelector('tbody')
+      table.querySelectorAll('button, input').forEach(elem => {
+          elem.disabled = false;
+        });
+
+      // hide the words
+      table.querySelectorAll('td.word').forEach(elem => {
+        elem.style.visibility = "hidden";
+      });
+    }
+
+    function another() {
+      // remove all the table content
+      const table = document.querySelector('tbody');
+      table.innerHTML = "";
+
+      // build the prompts again
+      setTimeout(() => {
+        buildPrompts();
+      }, "50");
+    }
+
+function checkResult(obj) {
+  checkWord(obj);
+}
+
+function toggleNumber(obj) {
+  const val = obj.value;
+  if(val=="random")
+    buildRandomPrompts();
+  else
+    buildPrompts(parseInt(val));
+}
+
+function buildNumberSelect() {
+  const div = document.querySelector('#numberSelect');
+  for(i = 1; i <= 12; i++) {
+    let row = 
+`  <input type="radio" id="number${i}" name="numbers" value="${i}" onclick="toggleNumber(this)">
+  <label for="number${i}" onclick="toggleNumber(this)">${i}</label>`;
+    let obj = div.insertAdjacentHTML("beforeend",row);
+  }
+  const first = document.querySelector('#number1');
+  // first.checked = true;
+  
+  row = `  <input type="radio" id="numberRandom" name="numbers" value="random" onclick="toggleNumber(this)">
+  <label for="numberRandom" onclick="toggleNumber(this)">Random</label>`;
+    let obj = div.insertAdjacentHTML("beforeend",row);
+
+}
+
+function buildPrompts(num) {
+  const table = document.querySelector('tbody');
+  table.replaceChildren();
+
+  for(i = 0; i < 12; i++) {
+        const first = num;
+        const second = Math.floor(Math.random() * 13);
+
+        let row = `<tr>
+          <td class="number">${first}</td>
+          <td> * </td>
+          <td class="number">${second}</td>
+          <td> = </td>
+          <td class="result">${first * second}</td>
+          <td>
+            <input type="text" onkeypress="keypress(this)" autocomplete="off" autocorrect="off" autocapitalize="off" 
+            spellcheck="false" />
+          </td>
+          <td><button onClick="checkResult(this)">Check</button></td>
+          </tr>`;
+        let obj = table.insertAdjacentHTML("beforeend",row);
+      }
+      
+      setTimeout(() => {
+        const input = table.querySelector('input');
+        input.focus();
+      }, "300");
+}
+
+function buildRandomPrompts() {
+      const table = document.querySelector('tbody');
+      table.replaceChildren();
+
+      for(i = 0; i < 12; i++) {
+        const num1 = Math.floor(Math.random() * 10) + 1;
+        const num2 = Math.floor(Math.random() * 40) + 1;
+        const denom1 = Math.floor(Math.random() * 10) + 1;
+        const denom2 = denom1 * (Math.floor(Math.random() * 4) + 1);
+
+        let row = `<tr>
+          <td class="number">${num1} / ${denom1}</td>
+          <td> + </td>
+          <td class="number">A</td>
+          <td> = </td>
+          <td>${num2} / ${denom2}</td>
+          <td>&nbsp;&nbsp;&nbsp;</td>
+          <td class="result">  ${num2 - denom2/denom1*num1} / ${denom2}</td>
+          <td>
+            A = 
+            <input type="text" onkeypress="keypress(this)" autocomplete="off" autocorrect="off" autocapitalize="off" 
+            spellcheck="false" />
+          </td>
+          <td><button onClick="checkResult(this)">Check</button></td>
+          </tr>`;
+        let obj = table.insertAdjacentHTML("beforeend",row);
+      }
+      
+    }
+
+    window.onload = function() {
+      buildNumberSelect();
+      // buildPrompts();
+      // setTimeout(() => {
+      //   const input = table.querySelector('input');
+      //   input.focus();
+      // }, "300");
+    }
+    
+</script>
+<div id="numberSelect">
+</div>
+<div id="prompts">
+  <table><tbody></tbody></table>
+  
+  <div><button onclick="tryAgain()">Retry</button></div>
+  <div><button onclick="another()">New</button></div>
+  
+  </body>
+</html>
