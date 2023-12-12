@@ -4,6 +4,7 @@
 <style>
   html { font-family: sans-serif; }
   html, button, input { font-size: 16px; }
+  input { width: 5em; }
   input.false { color: red; }
   input.correct { background-color: green; color: white; }
   td.result { visibility: hidden; text-align: center; }
@@ -66,12 +67,12 @@
 
     function another() {
       // remove all the table content
-      const table = document.querySelector('tbody');
-      table.innerHTML = "";
+      // const table = document.querySelector('tbody');
+      // table.innerHTML = "";
 
       // build the prompts again
       setTimeout(() => {
-        buildPrompts();
+        buildRandomPrompts();
       }, "50");
     }
 
@@ -198,7 +199,7 @@ function buildRandomPrompts() {
   <table><tbody></tbody></table>
   
   <div><button onclick="tryAgain()">Retry</button></div>
-  <div><button onclick="another()">New</button></div>
+  <div><button onclick="buildRandomPrompts()">New</button></div>
   
   </body>
 </html>
