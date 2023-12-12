@@ -59,7 +59,7 @@
         });
 
       // hide the words
-      table.querySelectorAll('td.word').forEach(elem => {
+      table.querySelectorAll('td.result').forEach(elem => {
         elem.style.visibility = "hidden";
       });
     }
@@ -137,31 +137,53 @@ function buildRandomPrompts() {
       const table = document.querySelector('tbody');
       table.replaceChildren();
 
-      for(i = 0; i < 12; i++) {
+      function solvepluseq(num1, num2, denom1, denom2) { return num2 - denom2/denom1*num1 }
+      function solvepluseqdenom(num1, num2, denom1, denom2) { return denom2 }
+
+      function solveminuseq(num1, num2, denom1, denom2) { return num1 - denom2/denom1*num2 }
+      function solveminuseqdenom(num1, num2, denom1, denom2) { return denom2 }
+
+      function solvemultiplyeq(num1, num2, denom1, denom2) { return num2 * denom1  }
+      function solvemultiplyeqdenom(num1, num2, denom1, denom2) { return num1 * denom2 }
+
+      function solvedivideeq(num1, num2, denom1, denom2) { return num1 * denom2 }
+      function solvedivideeqdenom(num1, num2, denom1, denom2) { return denom1 * num2 }
+
+      let problemTypes = [{ "v": "A", "f": "&plus;", "cn": solvepluseq, "cd": solvepluseqdenom},
+      { "v": "B", "f": "&minus;", "cn": solveminuseq, "cd": solveminuseqdenom, "cd": solveminuseqdenom},
+      { "v": "C", "f": "&times;", "cn": solvemultiplyeq, "cd": solvemultiplyeqdenom},
+      { "v": "D", "f": "&divide;", "cn": solvedivideeq, "cd": solvedivideeqdenom}];
+
+      for(i = 0; i < 4; i++) {
         const num1 = Math.floor(Math.random() * 10) + 1;
-        const num2 = Math.floor(Math.random() * 40) + 1;
+        const num2 = Math.floor(Math.random() * 10) + 1;
         const denom1 = Math.floor(Math.random() * 10) + 1;
-        const denom2 = denom1 * (Math.floor(Math.random() * 4) + 1);
+        const denom2 = denom1 * (Math.floor(Math.random() * 2) + 1);
+        const probType = problemTypes[Math.floor(Math.random() * problemTypes.length)];
+        let calcNumerator = probType.cn;
+        let calcDenominator = probType.cd;
+        let variable = probType.v;
+        let func = probType.f;
 
         let row = `<tr>
           <td class="number">${num1} <hr> ${denom1}</td>
-          <td> + </td>
-          <td class="number">A</td>
-          <td> = </td>
+          <td>&nbsp; ${func} &nbsp;</td>
+          <td class="number">${variable}</td>
+          <td>&nbsp; = &nbsp;</td>
           <td class="number">${num2} <hr> ${denom2}</td>
           <td>&nbsp;&nbsp;&nbsp;</td>
-          <td class="result" data="${num2 - denom2/denom1*num1}/${denom2}">${num2 - denom2/denom1*num1} <hr> ${denom2}</td>
+          <td class="result" data="${calcNumerator(num1,num2,denom1,denom2)}/${calcDenominator(num1,num2,denom1,denom2)}">
+            ${calcNumerator(num1,num2,denom1,denom2)} <hr> ${calcDenominator(num1,num2,denom1,denom2)}</td>
           <td>
-            A = 
+            ${variable} = 
             <input type="text" onkeypress="keypress(this)" autocomplete="off" autocorrect="off" autocapitalize="off" 
             spellcheck="false" />
           </td>
           <td><button onClick="checkResult(this)">Check</button></td>
           </tr>
           <tr><td>&nbsp;</td></tr>`;
-        let obj = table.insertAdjacentHTML("beforeend",row);
-      }
-      
+        table.insertAdjacentHTML("beforeend",row);
+      } 
     }
 
     window.onload = function() {
