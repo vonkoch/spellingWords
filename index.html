@@ -524,9 +524,13 @@
       afterward| I will answer your question afterward.
       directly| You should go directly to the bus.`);
 
-    var avkWords6thUnit12 = CSVToJSON(`word|description
-        foo | bar
-    `,"|");
+    var avkWords6thUnit12 = 
+      avkWords6thUnit07
+        .concat(avkWords6thUnit08)
+        .concat(avkWords6thUnit09)
+        .concat(avkWords6thUnit10)
+        .concat(avkWords6thUnit11);
+
     
     var avkWords6thUnit13 = CSVToJSON(`word|description
     fashion | Long skirts were in fashion then.
@@ -549,6 +553,28 @@
     suffix | A suffix is added to the end of a word.
     shelf | We keep the blender on the top shelf.
     offer | I had to turn down her generous offer.`,"|");
+
+    var avkWords6thUnit14 = CSVToJSON(`word|description
+      magazine | She subscribes to a sports magazine.
+      pessimism | Don't give in to gloomy pessimism.
+      conclusion | I read the conclusion to the story.
+      optimism | Cheerful optimism can help you succeed.
+      television | I watched a nature special on television.
+      amaze | The gymnast's ability will amaze you.
+      cruise | Ships slowly cruise into the harbor.
+      casual | We wore casual clothes to the picnic.
+      husband | She ate lunch with her husband.
+      phase | The project is in a difficult phase.
+      vision | The reading glasses improved his vision.
+      browse | I will quickly browse through the books.
+      usual | My usual breakfast is yogurt and fruit.
+      freeze | The tender plants might freeze.
+      visual | Fireworks are a bright visual display.
+      scissors | These scissors are not very sharp.
+      arise | Call me if any problems arise.
+      pause | There is a dramatic pause in the music.
+      visitor | He invited the visitor to stay for lunch.
+      tease | Friends tease me about being late.`,"|");
 
     var vvkWordsFri20230421Before = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ];
 
