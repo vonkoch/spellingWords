@@ -144,11 +144,11 @@ function buildRandomPrompts() {
         const denom2 = denom1 * (Math.floor(Math.random() * 4) + 1);
 
         let row = `<tr>
-          <td class="number">${num1} / ${denom1}</td>
+          <td class="number">${num1} <hr> ${denom1}</td>
           <td> + </td>
           <td class="number">A</td>
           <td> = </td>
-          <td>${num2} / ${denom2}</td>
+          <td class="number">${num2} <hr> ${denom2}</td>
           <td>&nbsp;&nbsp;&nbsp;</td>
           <td class="result">  ${num2 - denom2/denom1*num1} / ${denom2}</td>
           <td>
@@ -157,19 +157,16 @@ function buildRandomPrompts() {
             spellcheck="false" />
           </td>
           <td><button onClick="checkResult(this)">Check</button></td>
-          </tr>`;
+          </tr>
+          <tr><td>&nbsp;</td></tr>`;
         let obj = table.insertAdjacentHTML("beforeend",row);
       }
       
     }
 
     window.onload = function() {
-      buildNumberSelect();
-      // buildPrompts();
-      // setTimeout(() => {
-      //   const input = table.querySelector('input');
-      //   input.focus();
-      // }, "300");
+//      buildNumberSelect();
+      buildRandomPrompts();
     }
     
 </script>
