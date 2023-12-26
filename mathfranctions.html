@@ -65,44 +65,8 @@
       });
     }
 
-    function another() {
-      // remove all the table content
-      // const table = document.querySelector('tbody');
-      // table.innerHTML = "";
-
-      // build the prompts again
-      setTimeout(() => {
-        buildRandomPrompts();
-      }, "50");
-    }
-
 function checkResult(obj) {
   checkWord(obj);
-}
-
-function toggleNumber(obj) {
-  const val = obj.value;
-  if(val=="random")
-    buildRandomPrompts();
-  else
-    buildPrompts(parseInt(val));
-}
-
-function buildNumberSelect() {
-  const div = document.querySelector('#numberSelect');
-  for(i = 1; i <= 12; i++) {
-    let row = 
-`  <input type="radio" id="number${i}" name="numbers" value="${i}" onclick="toggleNumber(this)">
-  <label for="number${i}" onclick="toggleNumber(this)">${i}</label>`;
-    let obj = div.insertAdjacentHTML("beforeend",row);
-  }
-  const first = document.querySelector('#number1');
-  // first.checked = true;
-  
-  row = `  <input type="radio" id="numberRandom" name="numbers" value="random" onclick="toggleNumber(this)">
-  <label for="numberRandom" onclick="toggleNumber(this)">Random</label>`;
-    let obj = div.insertAdjacentHTML("beforeend",row);
-
 }
 
 function buildPrompts(num) {
@@ -141,7 +105,7 @@ function buildRandomPrompts() {
       function solvepluseq(num1, num2, denom1, denom2) { return num2 - denom2/denom1*num1 }
       function solvepluseqdenom(num1, num2, denom1, denom2) { return denom2 }
 
-      function solveminuseq(num1, num2, denom1, denom2) { return num1 - denom2/denom1*num2 }
+      function solveminuseq(num1, num2, denom1, denom2) { return num1 - num2 * (denom2/denom1) }
       function solveminuseqdenom(num1, num2, denom1, denom2) { return denom2 }
 
       function solvemultiplyeq(num1, num2, denom1, denom2) { return num2 * denom1  }
