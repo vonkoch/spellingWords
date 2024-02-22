@@ -760,8 +760,6 @@
       document | The lawyer signed the document.
       garbage | Please take out the garbage.`,"|");
 
-    var vvkWordsFri20230421Before = [ "zoo", "tooth", "hook", "moon", "book", "soon", "took", "good", "room", "foot", "you", "who" ];
-
     var vvkWordsFri20230421 = [ "sky", "find", "night", "high", "fly", "try", "light", "dry", "right", "mind", "eye", "buy" ];
 
     var vvkWordsFri20230428 = [ "liked", "hoping", "baked", "using", "chased", "making", "closed", "hiding", "named", "riding" ];
@@ -1003,6 +1001,22 @@
       chair, I sit on a chair all day long.
       friendly, You are very friendly to everyone.
       carried, I like to be carried upstairs.`);
+
+    var vvkWordsFri20240223 = CSVToJSON(`word,description
+      tooth, After I ate a lot of chocolade my tooth hurts.
+      chew, Don't chew so loud you will wake up the baby.
+      grew, You grew one inch this past month.
+      cook, I love your pasta you are a great cook.
+      shoe, Please wear your running shoes. 
+      blue, Not red but blue.
+      boot, Where is your winter boot.
+      flew, I flew in from Berlin and boy are my arms tired.
+      shook, He shook the tree get the nuts.
+      balloon, For your birthday we got you a balloon.
+      drew, I drew my favorite horse on a sheet of paper.
+      spoon, I eat soup with a spoon.
+      loose, I have a loose screw.
+      brook, He would brook no interference with his plans.`);
 
     function selectedKid() {
       const kid = document.querySelector('input[name="kid"]:checked').value;
