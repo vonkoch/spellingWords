@@ -1038,6 +1038,18 @@
       Bona fide: Genuine; real. Done or made in good faith without deception.
       Reprimand: A formal expression of disapproval or criticism, typically from someone in authority.`,":");
 
+    var avkWords7thGrade20250509 = CSVToJSON(`word
+      fiance
+      gourmet
+      carousel
+      camouflage
+      masquerade
+      boutique
+      fatigue
+      intrigue
+      Silhouette`);
+
+
 /* Synonyms for the words
 Here are synonyms for each of the words:
 Itinerant – Nomadic, *wandering*, roving
@@ -1360,18 +1372,17 @@ Reprimand – Rebuke, *scold*, admonish
       thermometer, can you measure me wit the thermometer
       mumble, please speak up and don't mumble`);
     
-      var vvkWordsFri20241213 = CSVToJSON(`word,description
-        acquire, to get
-        establish, to put and settle into place
-        fatal, causing death
-        promote, to help or encourage growth
-        retreat, to back away from danger
-        seize, to take
-        surrender, to give up to a more powerful force
-        thrive, to grow and succeed
-        transform, to change something completely and usually in a positive way
-        unravel, to come undone or fall apart`);
-
+    var vvkWordsFri20241213 = CSVToJSON(`word,description
+      acquire, to get
+      establish, to put and settle into place
+      fatal, causing death
+      promote, to help or encourage growth
+      retreat, to back away from danger
+      seize, to take
+      surrender, to give up to a more powerful force
+      thrive, to grow and succeed
+      transform, to change something completely and usually in a positive way
+      unravel, to come undone or fall apart`);
 
     function selectedKid() {
       const kid = document.querySelector('input[name="kid"]:checked').value;
@@ -1503,7 +1514,7 @@ Reprimand – Rebuke, *scold*, admonish
         let row = `<tr><td class="key">${parseInt(i)+1}</td>
           <td><button onClick="sayWord(this); return false;">Word</button></td>
           <td ${(typeof wordlist[i] === 'string') ? 'style="display:none"' : ""}>
-            <button onClick="sayDescription(this); false">Description</button>
+            <button onClick="sayDescription(this); return false;">Description</button>
           </td>
           <td class="word">${(typeof wordlist[i] === 'string') ? wordlist[i] : wordlist[i].word}</td>
           <td>
